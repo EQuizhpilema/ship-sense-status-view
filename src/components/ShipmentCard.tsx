@@ -1,4 +1,3 @@
-
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -52,26 +51,26 @@ export function ShipmentCard({
         <div className="bg-green-50 p-3 rounded-sm text-xs">
           <p className="font-bold">Your Current Delivery Appointment</p>
           <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
-          <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
+          <p className="text-gray-700">Appointment Contact: Antonio</p>
         </div>
         
         {/* Divider */}
         <div className="border-t border-gray-200"></div>
         
-        {/* Ship from address - Now first */}
+        {/* Origin address - Now first */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
-            <h3 className="text-lg font-semibold">Ship From</h3>
+            <h3 className="text-lg font-semibold">Origin</h3>
             <p className="text-gray-700 text-sm uppercase">{shipFromAddress.city}, {shipFromAddress.state} {shipFromAddress.zip}</p>
           </div>
         </div>
         
-        {/* Delivery address - Now second */}
+        {/* Destination address - Now second */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
-            <h3 className="text-lg font-semibold">Deliver To</h3>
+            <h3 className="text-lg font-semibold">Destination</h3>
             <p className="text-gray-700 text-sm uppercase">{deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zip}</p>
           </div>
         </div>
@@ -79,4 +78,3 @@ export function ShipmentCard({
     </Card>
   );
 }
-
