@@ -1,3 +1,4 @@
+
 import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -24,6 +25,10 @@ interface ShipmentCardProps {
     zip: string;
   };
   customIcon?: ReactNode;
+  lastLocation?: {
+    city: string;
+    state: string;
+  };
 }
 export function ShipmentCard({
   status,
@@ -33,7 +38,8 @@ export function ShipmentCard({
   appointmentDetails,
   deliveryAddress,
   shipFromAddress,
-  customIcon
+  customIcon,
+  lastLocation
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
@@ -76,6 +82,13 @@ export function ShipmentCard({
             <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
             <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
           </div>}
+        
+        {/* Last Location - shown for all non-delivered shipments */}
+        {status.toLowerCase() !== "delivered" && lastLocation && (
+          <div className="text-sm text-gray-700">
+            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
+          </div>
+        )}
         
         {/* Divider */}
         <div className="border-t border-gray-200"></div>

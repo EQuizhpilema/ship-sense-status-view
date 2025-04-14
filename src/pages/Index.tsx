@@ -21,6 +21,10 @@ const Index = () => {
       city: "CINCINNATI",
       state: "OH",
       zip: "45246"
+    },
+    lastLocation: {
+      city: "Portland",
+      state: "OR"
     }
   };
 
@@ -38,6 +42,10 @@ const Index = () => {
       city: "DALLAS",
       state: "TX",
       zip: "75201"
+    },
+    lastLocation: {
+      city: "Boise",
+      state: "ID"
     }
   };
 
@@ -59,6 +67,7 @@ const Index = () => {
       state: "NY",
       zip: "10550"
     }
+    // No lastLocation for delivered packages
   };
 
   // New card - same as In Transit but with appointment details
@@ -80,6 +89,10 @@ const Index = () => {
       city: "CHICAGO",
       state: "IL",
       zip: "60601"
+    },
+    lastLocation: {
+      city: "Salt Lake City",
+      state: "UT"
     }
   };
   
@@ -102,6 +115,10 @@ const Index = () => {
       city: "NEW YORK",
       state: "NY",
       zip: "10001"
+    },
+    lastLocation: {
+      city: "Hartford",
+      state: "CT"
     }
   };
 
