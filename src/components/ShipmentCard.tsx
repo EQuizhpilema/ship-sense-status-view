@@ -1,4 +1,3 @@
-
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -67,8 +66,9 @@ export function ShipmentCard({
           )}
           
           {!signedBy && status.toLowerCase() === "in transit" && (
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Delivery Date</p>
+              <p>{date}</p>
             </div>
           )}
         </div>
