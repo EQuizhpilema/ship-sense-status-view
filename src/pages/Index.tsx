@@ -61,6 +61,28 @@ const Index = () => {
     }
   };
 
+  // New card - same as In Transit but with appointment details
+  const shipmentData4 = {
+    status: "In transit",
+    date: "Monday, February 3",
+    timeWindow: "1:00 pm - 4:00 pm",
+    appointmentDetails: {
+      date: "Monday, February 3",
+      timeWindow: "9:00 am - 11:00 am",
+      contact: "Nora"
+    },
+    deliveryAddress: {
+      city: "PORTLAND",
+      state: "OR",
+      zip: "97201"
+    },
+    shipFromAddress: {
+      city: "CHICAGO",
+      state: "IL",
+      zip: "60601"
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Detailed Shipment Tracking Status Cards</h1>
@@ -68,6 +90,7 @@ const Index = () => {
         <ShipmentCard {...shipmentData1} />
         <ShipmentCard {...shipmentData2} />
         <ShipmentCard {...shipmentData3} customIcon={<Check />} />
+        <ShipmentCard {...shipmentData4} />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>
