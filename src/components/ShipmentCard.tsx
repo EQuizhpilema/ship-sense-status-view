@@ -1,4 +1,3 @@
-
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -45,7 +44,7 @@ export function ShipmentCard({
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
           <p className="text-base font-medium text-gray-900">{date}</p>
-          <div className="text-sm text-gray-600 space-y-1">
+          <div className="text-sm text-gray-600">
             <p>Estimated Time of Arrival is Between</p>
             <p>{timeWindow}</p>
           </div>
@@ -82,4 +81,3 @@ export function ShipmentCard({
     </Card>
   );
 }
-
