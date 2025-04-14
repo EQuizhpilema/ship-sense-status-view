@@ -83,13 +83,6 @@ export function ShipmentCard({
             <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
           </div>}
         
-        {/* Last Location - shown for all non-delivered shipments */}
-        {status.toLowerCase() !== "delivered" && lastLocation && (
-          <div className="text-sm text-gray-700">
-            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
-          </div>
-        )}
-        
         {/* Divider */}
         <div className="border-t border-gray-200"></div>
         
@@ -116,6 +109,19 @@ export function ShipmentCard({
             </p>
           </div>
         </div>
+        
+        {/* Last Location - moved below Destination */}
+        {status.toLowerCase() !== "delivered" && lastLocation && (
+          <div className="flex items-center space-x-2">
+            <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
+            <div>
+              <h3 className="text-lg font-semibold">Last Location</h3>
+              <p className="text-gray-700 text-sm uppercase">
+                {lastLocation.city}, {lastLocation.state}
+              </p>
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>;
 }
