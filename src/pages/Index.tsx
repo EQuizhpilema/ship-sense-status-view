@@ -1,6 +1,6 @@
 
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { Check } from "lucide-react";
+import { Check, Calendar } from "lucide-react";
 
 const Index = () => {
   const shipmentData1 = {
@@ -82,6 +82,28 @@ const Index = () => {
       zip: "60601"
     }
   };
+  
+  // Fifth card with Delivery Appointment Date status and calendar icon
+  const shipmentData5 = {
+    status: "Delivery Appointment Date",
+    date: "Friday, April 18",
+    timeWindow: "",
+    appointmentDetails: {
+      date: "Friday, April 18",
+      timeWindow: "9:00 am - 2:00 pm",
+      contact: "EMAIL"
+    },
+    deliveryAddress: {
+      city: "BOSTON",
+      state: "MA",
+      zip: "02108"
+    },
+    shipFromAddress: {
+      city: "NEW YORK",
+      state: "NY",
+      zip: "10001"
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
@@ -91,6 +113,7 @@ const Index = () => {
         <ShipmentCard {...shipmentData2} />
         <ShipmentCard {...shipmentData3} customIcon={<Check />} />
         <ShipmentCard {...shipmentData4} />
+        <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>
