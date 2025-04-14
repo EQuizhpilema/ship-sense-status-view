@@ -1,7 +1,7 @@
-
 import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
+
 interface ShipmentCardProps {
   status: string;
   date: string;
@@ -30,6 +30,7 @@ interface ShipmentCardProps {
     state: string;
   };
 }
+
 export function ShipmentCard({
   status,
   date,
@@ -42,9 +43,9 @@ export function ShipmentCard({
   lastLocation
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
-        {/* Header with status */}
         <div className="flex flex-col items-center text-center space-y-3">
           <div className={`
             ${status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" : status.toLowerCase() === "in transit" ? "bg-gray-900 p-2 rounded-sm" : "bg-gray-900 p-2 rounded-sm"}`}>
@@ -52,20 +53,17 @@ export function ShipmentCard({
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
           
-          {/* New condition for Delivered status */}
           {status.toLowerCase() === "delivered" && <>
               <p className="text-sm text-gray-600">Actual Delivery Date and Time</p>
               <p className="text-base font-medium text-gray-900">{date}</p>
               <p className="text-sm font-medium text-gray-900">11:30 am - 11:30 am</p>
             </>}
           
-          {/* For In Transit status, show "Estimated Delivery Date" before the date */}
           {status.toLowerCase() === "in transit" && <>
               <p className="text-sm text-gray-600">Estimated Delivery Date</p>
               <p className="text-base font-medium text-gray-900">{date}</p>
             </>}
           
-          {/* For other statuses, show the date directly */}
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && <p className="text-base font-medium text-gray-900">{date}</p>}
           
           {signedBy && <p className="text-sm text-gray-600">Signed by: {signedBy}</p>}
@@ -76,17 +74,14 @@ export function ShipmentCard({
             </div>}
         </div>
         
-        {/* Appointment details - only shown if data exists */}
         {appointmentDetails && <div className="bg-green-50 p-3 rounded-sm text-xs">
             <p className="font-bold">Your Current Delivery Appointment</p>
             <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
             <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
           </div>}
         
-        {/* Divider */}
         <div className="border-t border-gray-200"></div>
         
-        {/* Origin address - Now first */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
@@ -98,7 +93,6 @@ export function ShipmentCard({
           </div>
         </div>
         
-        {/* Destination address - Now second */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
@@ -110,16 +104,9 @@ export function ShipmentCard({
           </div>
         </div>
         
-        {/* Last Location - moved below Destination */}
         {status.toLowerCase() !== "delivered" && lastLocation && (
-          <div className="flex items-center space-x-2">
-            <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
-            <div>
-              <h3 className="text-lg font-semibold">Last Location</h3>
-              <p className="text-gray-700 text-sm uppercase">
-                {lastLocation.city}, {lastLocation.state}
-              </p>
-            </div>
+          <div className="text-sm text-gray-700">
+            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
           </div>
         )}
       </CardContent>
