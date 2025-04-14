@@ -1,73 +1,64 @@
-# Welcome to your Lovable project
 
-## Project info
+# Detailed Shipment Tracking Status Card
 
-**URL**: https://lovable.dev/projects/c4415f56-fd4e-49d1-9a5d-aaba280e66dd
+A clean, modern shipment tracking card UI component built with React, TypeScript, and Tailwind CSS.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Clean, professional design
+- Responsive layout
+- Detailed shipping information display:
+  - Delivery status
+  - Delivery date and time window
+  - Appointment details
+  - Delivery address
+  - Shipping origin
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c4415f56-fd4e-49d1-9a5d-aaba280e66dd) and start prompting.
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- Lucide React icons
 
-Changes made via Lovable will be committed automatically to this repo.
+## Component Structure
 
-**Use your preferred IDE**
+The main component is a shipment tracking card that displays:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Current shipment status
+- Delivery date and time window
+- Appointment details in a highlighted section
+- Delivery address with map pin icon
+- Shipping origin with map pin icon
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Usage
 
-Follow these steps:
+```tsx
+import { ShipmentCard } from "@/components/ShipmentCard";
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+const shipmentData = {
+  status: "Out for delivery",
+  date: "Thursday, January 30",
+  timeWindow: "7:30 am - 9:30 am",
+  appointmentDetails: {
+    date: "Thursday, January 10",
+    timeWindow: "9 AM - 9 AM",
+    contact: "EMAIL"
+  },
+  deliveryAddress: {
+    city: "ALBANY",
+    state: "OR",
+    zip: "97321"
+  },
+  shipFromAddress: {
+    city: "CINCINNATI",
+    state: "OH",
+    zip: "45246"
+  }
+};
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+<ShipmentCard {...shipmentData} />
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c4415f56-fd4e-49d1-9a5d-aaba280e66dd) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Created with [Lovable](https://lovable.dev)
