@@ -52,7 +52,19 @@ export function ShipmentCard({
             }
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
-          <p className="text-base font-medium text-gray-900">{date}</p>
+          
+          {/* For In Transit status, show "Estimated Delivery Date" before the date */}
+          {status.toLowerCase() === "in transit" && (
+            <>
+              <p className="text-sm text-gray-600">Estimated Delivery Date</p>
+              <p className="text-base font-medium text-gray-900">{date}</p>
+            </>
+          )}
+          
+          {/* For other statuses, show the date directly */}
+          {status.toLowerCase() !== "in transit" && (
+            <p className="text-base font-medium text-gray-900">{date}</p>
+          )}
           
           {signedBy && (
             <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
@@ -62,12 +74,6 @@ export function ShipmentCard({
             <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Time of Arrival is Between</p>
               <p>{timeWindow}</p>
-            </div>
-          )}
-          
-          {!signedBy && status.toLowerCase() === "in transit" && (
-            <div className="text-sm text-gray-600 space-y-2">
-              <p>Estimated Delivery Date</p>
             </div>
           )}
         </div>
