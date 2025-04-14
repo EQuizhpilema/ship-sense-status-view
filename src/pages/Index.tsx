@@ -1,5 +1,6 @@
 
 import { ShipmentCard } from "@/components/ShipmentCard";
+import { Check } from "lucide-react";
 
 const Index = () => {
   const shipmentData1 = {
@@ -40,12 +41,33 @@ const Index = () => {
     }
   };
 
+  const shipmentData3 = {
+    status: "Delivered",
+    date: "Wednesday, April 9",
+    timeWindow: "10:38",
+    signedBy: "HECTOR",
+    appointmentDetails: null,
+    deliveryAddress: {
+      name: "RED SMITH FOODS INC",
+      city: "FORT LAUDERDALE",
+      state: "FL",
+      zip: "33314"
+    },
+    shipFromAddress: {
+      name: "DCW CASING LLC",
+      city: "MOUNT VERNON",
+      state: "NY",
+      zip: "10550"
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Detailed Shipment Tracking Status Cards</h1>
       <div className="flex flex-wrap gap-6 justify-center">
         <ShipmentCard {...shipmentData1} />
         <ShipmentCard {...shipmentData2} />
+        <ShipmentCard {...shipmentData3} customIcon={<Check />} />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>

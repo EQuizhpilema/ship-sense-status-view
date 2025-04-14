@@ -1,35 +1,42 @@
 
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ReactNode } from "react";
 
 interface ShipmentCardProps {
   status: string;
   date: string;
   timeWindow: string;
+  signedBy?: string;
   appointmentDetails: {
     date: string;
     timeWindow: string;
     contact: string;
   } | null;
   deliveryAddress: {
+    name?: string;
     city: string;
     state: string;
     zip: string;
   };
   shipFromAddress: {
+    name?: string;
     city: string;
     state: string;
     zip: string;
   };
+  customIcon?: ReactNode;
 }
 
 export function ShipmentCard({
   status,
   date,
   timeWindow,
+  signedBy,
   appointmentDetails,
   deliveryAddress,
   shipFromAddress,
+  customIcon,
 }: ShipmentCardProps) {
   // Helper function to convert to title case
   const toTitleCase = (str: string) => 
@@ -40,15 +47,25 @@ export function ShipmentCard({
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         {/* Header with status */}
         <div className="flex flex-col items-center text-center space-y-3">
-          <div className="bg-gray-900 p-2 rounded-sm">
-            <Truck className="h-5 w-5 text-white" />
+          <div className={`${status.toLowerCase() === "delivered" ? "bg-green-500" : "bg-gray-900"} p-2 rounded-sm`}>
+            {customIcon ? 
+              customIcon : 
+              <Truck className="h-5 w-5 text-white" />
+            }
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
-          <p className="text-base font-medium text-gray-900">{date}</p>
-          <div className="text-sm text-gray-600 space-y-2">
-            <p>Estimated Time of Arrival is Between</p>
-            <p>{timeWindow}</p>
-          </div>
+          <p className="text-base font-medium text-gray-900">{date} {timeWindow}</p>
+          
+          {signedBy && (
+            <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
+          )}
+          
+          {!signedBy && (
+            <div className="text-sm text-gray-600 space-y-2">
+              <p>Estimated Time of Arrival is Between</p>
+              <p>{timeWindow}</p>
+            </div>
+          )}
         </div>
         
         {/* Appointment details - only shown if data exists */}
@@ -68,7 +85,12 @@ export function ShipmentCard({
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
             <h3 className="text-lg font-semibold">Origin</h3>
-            <p className="text-gray-700 text-sm uppercase">{shipFromAddress.city}, {shipFromAddress.state} {shipFromAddress.zip}</p>
+            {shipFromAddress.name && (
+              <p className="text-gray-700 text-sm">{shipFromAddress.name}</p>
+            )}
+            <p className="text-gray-700 text-sm uppercase">
+              {shipFromAddress.city}, {shipFromAddress.state} {shipFromAddress.zip}
+            </p>
           </div>
         </div>
         
@@ -77,7 +99,12 @@ export function ShipmentCard({
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
             <h3 className="text-lg font-semibold">Destination</h3>
-            <p className="text-gray-700 text-sm uppercase">{deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zip}</p>
+            {deliveryAddress.name && (
+              <p className="text-gray-700 text-sm">{deliveryAddress.name}</p>
+            )}
+            <p className="text-gray-700 text-sm uppercase">
+              {deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zip}
+            </p>
           </div>
         </div>
       </CardContent>
