@@ -1,3 +1,4 @@
+
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -37,12 +38,14 @@ export function ShipmentCard({
   shipFromAddress,
   customIcon,
 }: ShipmentCardProps) {
+  // Helper function to convert to title case
   const toTitleCase = (str: string) => 
     str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
   return (
     <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
+        {/* Header with status */}
         <div className="flex flex-col items-center text-center space-y-3">
           <div className={`${status.toLowerCase() === "delivered" ? "bg-green-500" : "bg-gray-900"} p-2 rounded-sm`}>
             {customIcon ? 
@@ -51,13 +54,13 @@ export function ShipmentCard({
             }
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
-          <p className="text-base font-medium text-gray-900">{date}</p>
+          <p className="text-base font-medium text-gray-900">{date} {timeWindow}</p>
           
           {signedBy && (
             <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
           )}
           
-          {!signedBy && status.toLowerCase() !== "out for delivery" && (
+          {!signedBy && (
             <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Time of Arrival is Between</p>
               <p>{timeWindow}</p>
@@ -65,6 +68,7 @@ export function ShipmentCard({
           )}
         </div>
         
+        {/* Appointment details - only shown if data exists */}
         {appointmentDetails && (
           <div className="bg-green-50 p-3 rounded-sm text-xs">
             <p className="font-bold">Your Current Delivery Appointment</p>
@@ -73,8 +77,10 @@ export function ShipmentCard({
           </div>
         )}
         
+        {/* Divider */}
         <div className="border-t border-gray-200"></div>
         
+        {/* Origin address - Now first */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
@@ -88,6 +94,7 @@ export function ShipmentCard({
           </div>
         </div>
         
+        {/* Destination address - Now second */}
         <div className="flex items-center space-x-2">
           <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
           <div>
