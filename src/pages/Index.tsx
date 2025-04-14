@@ -44,7 +44,7 @@ const Index = () => {
   const shipmentData3 = {
     status: "Delivered",
     date: "Wednesday, April 9",
-    timeWindow: "10:38",
+    timeWindow: "11:30 am - 11:33 am",
     signedBy: "HECTOR",
     appointmentDetails: null,
     deliveryAddress: {
