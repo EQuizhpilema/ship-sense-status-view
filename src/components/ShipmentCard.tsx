@@ -10,7 +10,7 @@ interface ShipmentCardProps {
     date: string;
     timeWindow: string;
     contact: string;
-  };
+  } | null;
   deliveryAddress: {
     city: string;
     state: string;
@@ -39,24 +39,26 @@ export function ShipmentCard({
     <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         {/* Header with status */}
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center space-y-3">
           <div className="bg-gray-900 p-2 rounded-sm">
             <Truck className="h-5 w-5 text-white" />
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
           <p className="text-base font-medium text-gray-900">{date}</p>
-          <div className="text-sm text-gray-600 space-y-1">
+          <div className="text-sm text-gray-600 space-y-2">
             <p>Estimated Time of Arrival is Between</p>
             <p>{timeWindow}</p>
           </div>
         </div>
         
-        {/* Appointment details */}
-        <div className="bg-green-50 p-3 rounded-sm text-xs">
-          <p className="font-bold">Your Current Delivery Appointment</p>
-          <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
-          <p className="text-gray-700">Appointment Contact: Antonio</p>
-        </div>
+        {/* Appointment details - only shown if data exists */}
+        {appointmentDetails && (
+          <div className="bg-green-50 p-3 rounded-sm text-xs">
+            <p className="font-bold">Your Current Delivery Appointment</p>
+            <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
+            <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
+          </div>
+        )}
         
         {/* Divider */}
         <div className="border-t border-gray-200"></div>
