@@ -68,7 +68,6 @@ export function ShipmentCard({
           {!signedBy && status.toLowerCase() === "in transit" && (
             <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Delivery Date</p>
-              <p>{date}</p>
             </div>
           )}
         </div>
