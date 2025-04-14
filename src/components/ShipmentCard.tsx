@@ -1,4 +1,3 @@
-
 import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -73,9 +72,9 @@ export function ShipmentCard({
           {/* For Delivered status, show "Actual Delivery Date and Time" above the date */}
           {status.toLowerCase() === "delivered" && (
             <>
-              <p className="text-sm text-gray-600">Actual Delivery Date and Time</p>
+              <p className="text-sm text-gray-600">Actual Delivery Date</p>
               <p className="text-base font-medium text-gray-900">{date}</p>
-              <p className="text-sm text-gray-600">11:30 am - 11:33 am</p>
+              <p className="text-sm text-gray-900">Actual Time of Delivery was Between 11:30 am - 11:30 am</p>
             </>
           )}
           
