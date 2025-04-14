@@ -54,7 +54,7 @@ export function ShipmentCard({
             }
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
-          <p className="text-base font-medium text-gray-900">{date} {timeWindow}</p>
+          <p className="text-base font-medium text-gray-900">{date}</p>
           
           {signedBy && (
             <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
