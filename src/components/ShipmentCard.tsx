@@ -42,16 +42,12 @@ export function ShipmentCard({
   const toTitleCase = (str: string) => 
     str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
-  const isDelivered = status.toLowerCase() === "delivered";
-  const isOutForDelivery = status.toLowerCase() === "out for delivery";
-  const isInTransit = status.toLowerCase() === "in transit";
-
   return (
     <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         {/* Header with status */}
         <div className="flex flex-col items-center text-center space-y-3">
-          <div className={`${isDelivered ? "bg-green-500" : "bg-gray-900"} p-2 rounded-sm`}>
+          <div className={`${status.toLowerCase() === "delivered" ? "bg-green-500" : "bg-gray-900"} p-2 rounded-sm`}>
             {customIcon ? 
               customIcon : 
               <Truck className="h-5 w-5 text-white" />
@@ -64,7 +60,7 @@ export function ShipmentCard({
             <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
           )}
           
-          {!signedBy && !isOutForDelivery && (
+          {!signedBy && (
             <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Time of Arrival is Between</p>
               <p>{timeWindow}</p>
