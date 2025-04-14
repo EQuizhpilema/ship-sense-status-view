@@ -50,7 +50,7 @@ export function ShipmentCard({
           {status.toLowerCase() === "delivered" && <>
               <p className="text-sm text-gray-600">Actual Delivery Date and Time</p>
               <p className="text-base font-medium text-gray-900">{date}</p>
-              <p className="text-sm text-gray-600">11:30 am - 11:30 am</p>
+              <p className="text-sm font-medium text-gray-900">11:30 am - 11:30 am</p>
             </>}
           
           {/* For In Transit status, show "Estimated Delivery Date" before the date */}
