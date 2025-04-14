@@ -1,4 +1,3 @@
-
 import { Truck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -38,7 +37,6 @@ export function ShipmentCard({
   shipFromAddress,
   customIcon,
 }: ShipmentCardProps) {
-  // Helper function to convert to title case
   const toTitleCase = (str: string) => 
     str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
@@ -60,7 +58,7 @@ export function ShipmentCard({
             <p className="text-sm text-gray-600">Signed by: {signedBy}</p>
           )}
           
-          {!signedBy && (
+          {!signedBy && status !== "Out for delivery" && (
             <div className="text-sm text-gray-600 space-y-2">
               <p>Estimated Time of Arrival is Between</p>
               <p>{timeWindow}</p>
