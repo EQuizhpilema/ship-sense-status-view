@@ -69,7 +69,6 @@ export function ShipmentCard({
           
           {status.toLowerCase() === "delivery exception" && <>
               <p className="text-base font-medium text-gray-900">{date}</p>
-              <p className="text-sm text-gray-600">Road Closure</p>
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <p className="text-base font-medium text-gray-900">{date}</p>}
@@ -86,6 +85,11 @@ export function ShipmentCard({
             <p className="font-bold">Your Current Delivery Appointment</p>
             <p className="text-gray-700">{appointmentDetails.date} between {appointmentDetails.timeWindow}</p>
             <p className="text-gray-700">Appointment Contact: {appointmentDetails.contact}</p>
+          </div>}
+        
+        {status.toLowerCase() === "delivery exception" && <div className="bg-red-50 p-3 rounded-sm text-xs">
+            <p className="font-bold text-red-800">Road Closure</p>
+            <p className="text-red-700">{date}</p>
           </div>}
         
         <div className="border-t border-gray-200"></div>

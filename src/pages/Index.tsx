@@ -124,7 +124,7 @@ const Index = () => {
   // New delivery exception card
   const shipmentData6 = {
     status: "Delivery Exception",
-    date: "Tuesday, February 4",
+    date: "Monday, June 30 10:05am",
     timeWindow: "",
     appointmentDetails: null,
     deliveryAddress: {
