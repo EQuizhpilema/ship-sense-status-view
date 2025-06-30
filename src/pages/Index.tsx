@@ -1,6 +1,5 @@
-
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { Check, Calendar } from "lucide-react";
+import { Check, Calendar, FileText } from "lucide-react";
 
 const Index = () => {
   const shipmentData1 = {
@@ -122,6 +121,28 @@ const Index = () => {
     }
   };
 
+  // New delivery exception card
+  const shipmentData6 = {
+    status: "Delivery Exception",
+    date: "Tuesday, February 4",
+    timeWindow: "",
+    appointmentDetails: null,
+    deliveryAddress: {
+      city: "SACRAMENTO",
+      state: "CA",
+      zip: "95814"
+    },
+    shipFromAddress: {
+      city: "LOS ANGELES",
+      state: "CA",
+      zip: "90210"
+    },
+    lastLocation: {
+      city: "Bakersfield",
+      state: "CA"
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Detailed Shipment Tracking Status Cards</h1>
@@ -131,6 +152,7 @@ const Index = () => {
         <ShipmentCard {...shipmentData3} customIcon={<Check />} />
         <ShipmentCard {...shipmentData4} />
         <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
+        <ShipmentCard {...shipmentData6} customIcon={<FileText className="h-6 w-6 text-white" />} />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>

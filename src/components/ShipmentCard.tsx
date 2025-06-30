@@ -1,3 +1,4 @@
+
 import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -48,7 +49,9 @@ export function ShipmentCard({
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         <div className="flex flex-col items-center text-center space-y-3">
           <div className={`
-            ${status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" : status.toLowerCase() === "in transit" ? "bg-gray-900 p-2 rounded-sm" : "bg-gray-900 p-2 rounded-sm"}`}>
+            ${status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" : 
+              status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" :
+              status.toLowerCase() === "in transit" ? "bg-gray-900 p-2 rounded-sm" : "bg-gray-900 p-2 rounded-sm"}`}>
             {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-white" /> : <Truck className="h-5 w-5 text-white" />}
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
@@ -64,7 +67,12 @@ export function ShipmentCard({
               <p className="text-base font-medium text-gray-900">{date}</p>
             </>}
           
-          {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && <p className="text-base font-medium text-gray-900">{date}</p>}
+          {status.toLowerCase() === "delivery exception" && <>
+              <p className="text-base font-medium text-gray-900">{date}</p>
+              <p className="text-sm text-gray-600">Road Closure</p>
+            </>}
+          
+          {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <p className="text-base font-medium text-gray-900">{date}</p>}
           
           {signedBy && <p className="text-sm text-gray-600">Signed by: {signedBy}</p>}
           
