@@ -1,4 +1,3 @@
-
 import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
@@ -68,7 +67,8 @@ export function ShipmentCard({
             </>}
           
           {status.toLowerCase() === "delivery exception" && <>
-              <p className="text-base font-medium text-gray-900">{date}</p>
+              <p className="text-sm text-gray-600">Estimated Delivery</p>
+              <p className="text-base font-medium text-gray-900">Tuesday, July 1</p>
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <p className="text-base font-medium text-gray-900">{date}</p>}
@@ -90,6 +90,9 @@ export function ShipmentCard({
         {status.toLowerCase() === "delivery exception" && <div className="bg-red-50 p-3 rounded-sm text-xs">
             <p className="font-bold text-red-800">Road Closure</p>
             <p className="text-red-700">{date}</p>
+            {lastLocation && (
+              <p className="text-red-700 mt-2">Last Location: {lastLocation.city}, {lastLocation.state}</p>
+            )}
           </div>}
         
         <div className="border-t border-gray-200"></div>
@@ -116,7 +119,7 @@ export function ShipmentCard({
           </div>
         </div>
         
-        {status.toLowerCase() !== "delivered" && lastLocation && (
+        {status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && lastLocation && (
           <div className="text-sm text-gray-700">
             <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
           </div>
