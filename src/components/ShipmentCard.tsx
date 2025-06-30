@@ -90,10 +90,13 @@ export function ShipmentCard({
         {status.toLowerCase() === "delivery exception" && <div className="bg-red-50 p-3 rounded-sm text-xs">
             <p className="font-bold text-red-800">Road Closure</p>
             <p className="text-red-700">{date}</p>
-            {lastLocation && (
-              <p className="text-red-700 mt-2">Last Location: {lastLocation.city}, {lastLocation.state}</p>
-            )}
           </div>}
+        
+        {status.toLowerCase() === "delivery exception" && lastLocation && (
+          <div className="text-sm text-gray-700">
+            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
+          </div>
+        )}
         
         <div className="border-t border-gray-200"></div>
         
