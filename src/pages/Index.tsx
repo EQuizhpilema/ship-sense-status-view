@@ -1,5 +1,5 @@
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { Check, Calendar, FileText } from "lucide-react";
+import { Check, Calendar, Triangle } from "lucide-react";
 
 const Index = () => {
   const shipmentData1 = {
@@ -152,7 +152,7 @@ const Index = () => {
         <ShipmentCard {...shipmentData3} customIcon={<Check />} />
         <ShipmentCard {...shipmentData4} />
         <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
-        <ShipmentCard {...shipmentData6} customIcon={<FileText className="h-6 w-6 text-white" />} />
+        <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>
