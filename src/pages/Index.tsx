@@ -68,8 +68,9 @@ const Index = () => {
       city: "BASALT",
       state: "CO",
       zip: "81621"
-    }
-    // No lastLocation for delivered packages
+    },
+    arrivalTime: "2:43 pm",
+    departureTime: "3:00 pm"
   };
 
   // New card - same as In Transit but with appointment details
