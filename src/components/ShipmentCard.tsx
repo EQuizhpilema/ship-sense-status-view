@@ -59,7 +59,11 @@ export function ShipmentCard({
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
           
-          {statusDetail && <p className="text-xs font-semibold text-gray-500 tracking-wide uppercase">{statusDetail}</p>}
+          {statusDetail && (
+            <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">
+              {statusDetail}
+            </span>
+          )}
           
           {status.toLowerCase() === "delivered" && <>
               <p className="text-base font-medium text-gray-900">{date}</p>
