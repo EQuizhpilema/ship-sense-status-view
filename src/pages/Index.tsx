@@ -69,7 +69,7 @@ const Index = () => {
       state: "CO",
       zip: "81621"
     },
-    arrivalTime: "2:43 pm",
+    arrivalTime: "2:43pm",
     departureTime: "3:00 pm"
   };
 
