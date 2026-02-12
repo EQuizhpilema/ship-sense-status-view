@@ -70,7 +70,7 @@ const Index = () => {
       zip: "81621"
     },
     arrivalTime: "2:43pm",
-    departureTime: "3:00 pm"
+    departureTime: "3:00pm"
   };
 
   // New card - same as In Transit but with appointment details
