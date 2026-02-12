@@ -50,21 +50,24 @@ const Index = () => {
 
   const shipmentData3 = {
     status: "Delivered",
-    date: "Wednesday, April 9",
-    timeWindow: "10:38",
-    signedBy: "HECTOR",
+    statusDetail: "DELIVERED CLEAR",
+    date: "Friday, February 6 2:43pm",
+    timeWindow: "",
+    signedBy: "SCOTT KARR",
     appointmentDetails: null,
     deliveryAddress: {
-      name: "RED SMITH FOODS INC",
-      city: "FORT LAUDERDALE",
-      state: "FL",
-      zip: "33314"
+      name: "TECH DATA RETURNS",
+      street: "5104 LIBERTY WAY DOCK DOOR 10",
+      city: "AURORA",
+      state: "CO",
+      zip: "80019"
     },
     shipFromAddress: {
-      name: "DCW CASING LLC",
-      city: "MOUNT VERNON",
-      state: "NY",
-      zip: "10550"
+      name: "PARAGON SYSTEMS INTEGRATION",
+      street: "20 SUNSET DR",
+      city: "BASALT",
+      state: "CO",
+      zip: "81621"
     }
     // No lastLocation for delivered packages
   };
