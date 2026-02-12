@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 
 interface ShipmentCardProps {
   status: string;
+  statusDetail?: string;
   date: string;
   timeWindow: string;
   signedBy?: string;
@@ -14,12 +15,14 @@ interface ShipmentCardProps {
   } | null;
   deliveryAddress: {
     name?: string;
+    street?: string;
     city: string;
     state: string;
     zip: string;
   };
   shipFromAddress: {
     name?: string;
+    street?: string;
     city: string;
     state: string;
     zip: string;
@@ -33,6 +36,7 @@ interface ShipmentCardProps {
 
 export function ShipmentCard({
   status,
+  statusDetail,
   date,
   timeWindow,
   signedBy,
@@ -55,10 +59,10 @@ export function ShipmentCard({
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
           
+          {statusDetail && <p className="text-xs font-semibold text-gray-500 tracking-wide uppercase">{statusDetail}</p>}
+          
           {status.toLowerCase() === "delivered" && <>
-              <p className="text-sm text-gray-600">Actual Delivery Date and Time</p>
               <p className="text-base font-medium text-gray-900">{date}</p>
-              <p className="text-sm font-medium text-gray-900">11:30 am - 11:30 am</p>
             </>}
           
           {status.toLowerCase() === "in transit" && <>
@@ -100,26 +104,26 @@ export function ShipmentCard({
         
         <div className="border-t border-gray-200"></div>
         
-        <div className="flex items-center space-x-2">
-          <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
-          <div>
-            <h3 className="text-lg font-semibold">Origin</h3>
-            {shipFromAddress.name && <p className="text-gray-700 text-sm">{shipFromAddress.name}</p>}
-            <p className="text-gray-700 text-sm uppercase">
-              {shipFromAddress.city}, {shipFromAddress.state} {shipFromAddress.zip}
-            </p>
-          </div>
+        <div className="space-y-1">
+          <h3 className="text-sm font-bold text-gray-900">
+            {status.toLowerCase() === "delivered" ? "Ship from" : "Origin"}
+          </h3>
+          {shipFromAddress.name && <p className="text-gray-700 text-sm uppercase">{shipFromAddress.name}</p>}
+          {shipFromAddress.street && <p className="text-gray-700 text-sm uppercase">{shipFromAddress.street}</p>}
+          <p className="text-gray-700 text-sm uppercase">
+            {shipFromAddress.city}, {shipFromAddress.state} {shipFromAddress.zip}
+          </p>
         </div>
         
-        <div className="flex items-center space-x-2">
-          <MapPin className="h-5 w-5 text-gray-800 flex-shrink-0" strokeWidth={2.5} />
-          <div>
-            <h3 className="text-lg font-semibold">Destination</h3>
-            {deliveryAddress.name && <p className="text-gray-700 text-sm">{deliveryAddress.name}</p>}
-            <p className="text-gray-700 text-sm uppercase">
-              {deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zip}
-            </p>
-          </div>
+        <div className="space-y-1">
+          <h3 className="text-sm font-bold text-gray-900">
+            {status.toLowerCase() === "delivered" ? "Delivered to" : "Destination"}
+          </h3>
+          {deliveryAddress.name && <p className="text-gray-700 text-sm uppercase">{deliveryAddress.name}</p>}
+          {deliveryAddress.street && <p className="text-gray-700 text-sm uppercase">{deliveryAddress.street}</p>}
+          <p className="text-gray-700 text-sm uppercase">
+            {deliveryAddress.city}, {deliveryAddress.state} {deliveryAddress.zip}
+          </p>
         </div>
         
         {status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && lastLocation && (
