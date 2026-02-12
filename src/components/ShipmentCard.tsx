@@ -28,6 +28,8 @@ interface ShipmentCardProps {
     zip: string;
   };
   customIcon?: ReactNode;
+  arrivalTime?: string;
+  departureTime?: string;
   lastLocation?: {
     city: string;
     state: string;
@@ -44,6 +46,8 @@ export function ShipmentCard({
   deliveryAddress,
   shipFromAddress,
   customIcon,
+  arrivalTime,
+  departureTime,
   lastLocation
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -80,6 +84,21 @@ export function ShipmentCard({
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <p className="text-base font-medium text-gray-900">{date}</p>}
+          
+          {arrivalTime && (
+            <div className="flex justify-center gap-8 w-full">
+              <div className="text-center">
+                <p className="text-xs text-gray-500">Arrived</p>
+                <p className="text-sm font-bold text-gray-900">{arrivalTime}</p>
+              </div>
+              {departureTime && (
+                <div className="text-center">
+                  <p className="text-xs text-gray-500">Departed</p>
+                  <p className="text-sm font-bold text-gray-900">{departureTime}</p>
+                </div>
+              )}
+            </div>
+          )}
           
           {signedBy && <p className="text-sm text-gray-600">Signed by: {signedBy}</p>}
           
