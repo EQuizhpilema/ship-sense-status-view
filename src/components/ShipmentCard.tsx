@@ -138,7 +138,7 @@ export function ShipmentCard({
             <p className="text-red-700">{date}</p>
           </div>}
         
-        {alertNote && <div className={`rounded-md border-l-4 p-3 pl-4 text-xs ${alertTone.box}`}>
+        {alertNote && <div className={`rounded-r-md rounded-l-none border-l-4 p-3 pl-4 text-xs ${alertTone.box}`}>
             <p className="font-semibold">{alertNote.text}</p>
           </div>}
         
