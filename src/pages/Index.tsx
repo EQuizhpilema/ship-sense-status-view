@@ -187,7 +187,7 @@ const Index = () => {
           timeWindow=""
           appointmentDetails={null}
           customIcon={networkIcon}
-          alertNote={{ text: "This delivery requires an appointment." }}
+          alertNote={{ text: "This delivery requires an appointment.", tone: "blue" }}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
