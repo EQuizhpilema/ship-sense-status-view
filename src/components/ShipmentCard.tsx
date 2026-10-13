@@ -51,6 +51,7 @@ export function ShipmentCard({
   lastLocation
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+  const isTerminal = status.toLowerCase() === "arrived at destination terminal";
 
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
@@ -119,17 +120,18 @@ export function ShipmentCard({
             <p className="text-red-700">{date}</p>
           </div>}
         
-        {status.toLowerCase() === "delivery exception" && lastLocation && (
-          <div className="text-sm text-gray-700">
-            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
+        {(status.toLowerCase() === "delivery exception" || isTerminal) && lastLocation && (
+          <div className={`text-sm text-gray-700 ${isTerminal ? "text-center" : ""}`}>
+            <p>{isTerminal ? "Last location" : "Last Location"}: {lastLocation.city}, {lastLocation.state}</p>
           </div>
         )}
         
         <div className="border-t border-gray-200"></div>
         
         <div className="space-y-1">
-          <h3 className="text-sm font-bold text-gray-900">
-            {status.toLowerCase() === "delivered" ? "Ship from" : "Origin"}
+          <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1">
+            {isTerminal && <MapPin className="h-4 w-4" />}
+            {status.toLowerCase() === "delivered" || isTerminal ? "Ship from" : "Origin"}
           </h3>
           {shipFromAddress.name && <p className="text-gray-700 text-sm uppercase">{shipFromAddress.name}</p>}
           {shipFromAddress.street && <p className="text-gray-700 text-sm uppercase">{shipFromAddress.street}</p>}
@@ -139,8 +141,9 @@ export function ShipmentCard({
         </div>
         
         <div className="space-y-1">
-          <h3 className="text-sm font-bold text-gray-900">
-            {status.toLowerCase() === "delivered" ? "Delivered to" : "Destination"}
+          <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1">
+            {isTerminal && <MapPin className="h-4 w-4" />}
+            {status.toLowerCase() === "delivered" ? "Delivered to" : isTerminal ? "Deliver to" : "Destination"}
           </h3>
           {deliveryAddress.name && <p className="text-gray-700 text-sm uppercase">{deliveryAddress.name}</p>}
           {deliveryAddress.street && <p className="text-gray-700 text-sm uppercase">{deliveryAddress.street}</p>}
@@ -149,7 +152,7 @@ export function ShipmentCard({
           </p>
         </div>
         
-        {status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && lastLocation && (
+        {status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && !isTerminal && lastLocation && (
           <div className="text-sm text-gray-700">
             <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
           </div>
