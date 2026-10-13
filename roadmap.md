@@ -6,3 +6,4 @@
 - Open: At Origin Terminal shows the truck bare on white while the other three sit in a dark badge — unify if the user wants.
 - Done: added a second shipment history tab, 17561748 (6 events, 10/08–10/10), alongside 17560215; the sidebar lists both and each opens its own timeline. Verified in the preview: correct rows and order, "In Transit" pill on the trailer-departed row, "At Origin Terminal" on freight unloaded, build OK.
 - Done: "Picked Up" event now shows a green Picked Up pill in the history rule set, so it appears in every history section (17560215 and 17561748). "Pickup Request Received" stays unbadged. Verified in the preview, build OK.
+- Done: added third history tab 33776674 (8 events, 10/09–10/12, Chino CA → Salt Lake City UT); pills auto-applied — In Transit on trailer departed, At Origin Terminal on freight unloaded, Picked Up on picked up. Verified in the preview, no page errors.
