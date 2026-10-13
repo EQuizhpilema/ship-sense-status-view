@@ -1,4 +1,4 @@
-import { Truck, MapPin, Check, AlertTriangle, Info } from "lucide-react";
+import { Truck, MapPin, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReactNode } from "react";
 
@@ -63,11 +63,11 @@ export function ShipmentCard({
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
   const isTerminal = /terminal|network/.test(status.toLowerCase());
-  // Bootstrap alert colours: bg #fff3cd / border #ffecb5 / text #664d03
+  // Bootstrap alert colours: pale field, dark text, solid accent bar down the left edge
   const alertTones = {
-    amber: { box: "bg-amber-100 border-amber-200 text-amber-900", Icon: AlertTriangle },
-    red: { box: "bg-red-100 border-red-200 text-red-900", Icon: AlertTriangle },
-    blue: { box: "bg-blue-100 border-blue-200 text-blue-900", Icon: Info }
+    amber: { box: "bg-amber-100 text-amber-900 border-l-amber-500" },
+    red: { box: "bg-red-100 text-red-900 border-l-red-500" },
+    blue: { box: "bg-blue-100 text-blue-900 border-l-blue-500" }
   };
   const alertTone = alertTones[alertNote?.tone ?? "amber"];
 
@@ -138,8 +138,7 @@ export function ShipmentCard({
             <p className="text-red-700">{date}</p>
           </div>}
         
-        {alertNote && <div className={`flex items-start gap-2 border rounded-md p-3 text-xs ${alertTone.box}`}>
-            <alertTone.Icon className="h-4 w-4 shrink-0 mt-0.5" />
+        {alertNote && <div className={`rounded-md border-l-4 p-3 pl-4 text-xs ${alertTone.box}`}>
             <p className="font-semibold">{alertNote.text}</p>
           </div>}
         
