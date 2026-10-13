@@ -179,6 +179,22 @@ const Index = () => {
       ),
     },
     {
+      label: "Arrived at Destination Terminal (Appointment Required)",
+      node: (
+        <ShipmentCard
+          status="Arrived at Destination Terminal"
+          date="Monday, October 12 2:00pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          alertNote={{ text: "This delivery requires an appointment." }}
+          shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
+          deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
+          lastLocation={{ city: "Woodbridge", state: "NJ" }}
+        />
+      ),
+    },
+    {
       label: "At Origin Terminal",
       node: (
         <ShipmentCard
