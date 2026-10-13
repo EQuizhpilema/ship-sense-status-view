@@ -31,7 +31,7 @@ export function ShipmentHistory({ proNumber, events }: ShipmentHistoryProps) {
       {open && (
         <div className="px-6 py-4">
           {events.map((e, i) => (
-            <div key={i} className="grid grid-cols-[1fr_2fr] gap-4 px-5 py-3 border-b border-gray-200 text-sm text-gray-700 hover:bg-gray-50">
+            <div key={i} className="grid grid-cols-[1fr_2fr_1fr] items-center gap-4 px-5 py-3 border-b border-gray-200 text-sm text-gray-700 hover:bg-gray-50">
               <div>
                 <p>{e.date}</p>
                 <p>{e.time}</p>
@@ -39,6 +39,18 @@ export function ShipmentHistory({ proNumber, events }: ShipmentHistoryProps) {
               <div>
                 <p>{e.event}</p>
                 <p>{e.location}</p>
+              </div>
+              <div className="flex justify-end">
+                {(() => {
+                  const ev = e.event.toLowerCase();
+                  if (ev === "freight unloaded")
+                    return <span className="bg-gray-100 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">At Origin Terminal</span>;
+                  if (ev === "trailer departed")
+                    return <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">In Transit</span>;
+                  if (ev === "appointment required for delivery")
+                    return <span className="bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded">Delivery Appointment Needed</span>;
+                  return null;
+                })()}
               </div>
             </div>
           ))}
