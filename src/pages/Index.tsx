@@ -195,6 +195,22 @@ const Index = () => {
       ),
     },
     {
+      label: "Arrived at Destination Terminal (PRO 33776674)",
+      node: (
+        <ShipmentCard
+          status="Arrived at Destination Terminal"
+          date="Tuesday, October 13"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          etaLabel="Estimated Delivery"
+          shipFromAddress={{ city: "CHINO", state: "CA", zip: "" }}
+          deliveryAddress={{ city: "SALT LAKE CITY", state: "UT", zip: "" }}
+          lastLocation={{ city: "Salt Lake City", state: "UT" }}
+        />
+      ),
+    },
+    {
       label: "At Origin Terminal",
       node: (
         <ShipmentCard
