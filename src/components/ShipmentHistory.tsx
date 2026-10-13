@@ -21,6 +21,8 @@ interface ShipmentHistoryProps {
   showProgress?: boolean;
   /** Upcoming steps shown as ghost rows at the top (nearest step last) */
   pendingSteps?: PendingStep[];
+  /** Estimated delivery date shown on the Delivered ghost row */
+  etaDate?: string;
 }
 
 const pill = "text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap";
@@ -35,7 +37,7 @@ function badgeFor(event: string) {
   return null;
 }
 
-export function ShipmentHistory({ proNumber, events, showProgress = false, pendingSteps = [] }: ShipmentHistoryProps) {
+export function ShipmentHistory({ proNumber, events, showProgress = false, pendingSteps = [], etaDate }: ShipmentHistoryProps) {
   const [open, setOpen] = useState(true);
 
   const milestoneIdx = events.map((e, i) => (badgeFor(e.event) ? i : -1)).filter((i) => i >= 0);
@@ -70,7 +72,14 @@ export function ShipmentHistory({ proNumber, events, showProgress = false, pendi
             pendingSteps.map((s, i) => (
               <div key={`p-${i}`} className="grid grid-cols-[1fr_2fr_1fr] items-center gap-4 px-5 py-3 border-b border-dashed border-gray-200 text-sm text-gray-400">
                 <div><p>Upcoming</p></div>
-                <div>{s.note && <p className={s.tone === "amber" ? "text-amber-700" : ""}>{s.note}</p>}</div>
+                <div>
+                  {s.note && <p className={s.tone === "amber" ? "text-amber-700" : ""}>{s.note}</p>}
+                  {etaDate && s.label.toLowerCase() === "delivered" && (
+                    <p className="text-xs text-gray-500">
+                      Estimated Delivery <span className="font-medium text-gray-700">{etaDate}</span>
+                    </p>
+                  )}
+                </div>
                 <div className="relative flex items-center justify-end self-stretch pr-8">
                   <span className={`absolute right-[11px] bottom-[-13px] border-l-2 border-dashed border-gray-300 ${i === 0 ? "top-1/2" : "top-[-13px]"}`} />
                   <span className={`absolute right-[6px] h-3 w-3 rounded-full border-2 border-dashed bg-white ${s.tone === "amber" ? "border-amber-500" : "border-gray-400"}`} />
