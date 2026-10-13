@@ -1,5 +1,5 @@
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { Check, Calendar, Triangle } from "lucide-react";
+import { Check, Calendar, Triangle, Package } from "lucide-react";
 
 const Index = () => {
   const shipmentData1 = {
@@ -165,6 +165,17 @@ const Index = () => {
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
+        />
+        <ShipmentCard
+          status="At Origin Terminal"
+          date="Thursday, October 8 7:43am"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={<Package className="h-9 w-9 text-gray-700" />}
+          iconClassName="bg-transparent p-0"
+          shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
+          deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
+          lastLocation={{ city: "The Custom Companies" }}
         />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>

@@ -32,8 +32,9 @@ interface ShipmentCardProps {
   departureTime?: string;
   lastLocation?: {
     city: string;
-    state: string;
+    state?: string;
   };
+  iconClassName?: string;
 }
 
 export function ShipmentCard({
@@ -48,18 +49,17 @@ export function ShipmentCard({
   customIcon,
   arrivalTime,
   departureTime,
-  lastLocation
+  lastLocation,
+  iconClassName
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-  const isTerminal = status.toLowerCase() === "arrived at destination terminal";
+  const isTerminal = status.toLowerCase().includes("terminal");
 
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         <div className="flex flex-col items-center text-center space-y-3">
-          <div className={`
-            ${status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" : 
-              status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" :
-              status.toLowerCase() === "in transit" ? "bg-gray-900 p-2 rounded-sm" : "bg-gray-900 p-2 rounded-sm"}`}>
+          <div className={iconClassName ?? (status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" :
+            status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" : "bg-gray-900 p-2 rounded-sm")}>
             {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-white" /> : <Truck className="h-5 w-5 text-white" />}
           </div>
           <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
@@ -122,7 +122,7 @@ export function ShipmentCard({
         
         {(status.toLowerCase() === "delivery exception" || isTerminal) && lastLocation && (
           <div className={`text-sm text-gray-700 ${isTerminal ? "text-center" : ""}`}>
-            <p>{isTerminal ? "Last location" : "Last Location"}: {lastLocation.city}, {lastLocation.state}</p>
+            <p>{isTerminal ? "Last location" : "Last Location"}: {lastLocation.city}{lastLocation.state ? `, ${lastLocation.state}` : ""}</p>
           </div>
         )}
         
@@ -154,7 +154,7 @@ export function ShipmentCard({
         
         {status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && !isTerminal && lastLocation && (
           <div className="text-sm text-gray-700">
-            <p>Last Location: {lastLocation.city}, {lastLocation.state}</p>
+            <p>Last Location: {lastLocation.city}{lastLocation.state ? `, ${lastLocation.state}` : ""}</p>
           </div>
         )}
       </CardContent>
