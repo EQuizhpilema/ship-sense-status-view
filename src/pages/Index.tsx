@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { ShipmentHistory, type HistoryEvent } from "@/components/ShipmentHistory";
+import { ShipmentHistory, type HistoryEvent, type PendingStep } from "@/components/ShipmentHistory";
 import { Check, Calendar, Triangle } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
@@ -353,7 +353,13 @@ const Index = () => {
 
 
   // Shipment histories — add new events to the top of each list
-  const histories: { proNumber: string; events: HistoryEvent[] }[] = [
+  const histories: {
+    proNumber: string;
+    label?: string;
+    events: HistoryEvent[];
+    showProgress?: boolean;
+    pendingSteps?: PendingStep[];
+  }[] = [
     {
       proNumber: "17560215",
       events: [
@@ -392,6 +398,16 @@ const Index = () => {
       ],
     },
   ];
+  histories.push({
+    ...histories[2],
+    label: "(Progress)",
+    showProgress: true,
+    pendingSteps: [
+      { label: "Delivered" },
+      { label: "Out for Delivery" },
+      { label: "Delivery Appointment Needed", note: "Awaiting appointment with consignee", tone: "amber" },
+    ],
+  });
 
   const navBtn = (active: boolean) =>
     `text-left text-sm px-3 py-2 rounded ${active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`;
@@ -418,15 +434,21 @@ const Index = () => {
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mt-6 mb-3 px-2">Shipment History</h2>
         <nav className="flex flex-col gap-1">
           {histories.map((h, i) => (
-            <button key={h.proNumber} onClick={() => setSelected(`history-${i}`)} className={navBtn(selected === `history-${i}`)}>
-              Shipment History - {h.proNumber}
+            <button key={h.proNumber + i} onClick={() => setSelected(`history-${i}`)} className={navBtn(selected === `history-${i}`)}>
+              Shipment History - {h.proNumber}{h.label ? ` ${h.label}` : ""}
             </button>
           ))}
         </nav>
       </aside>
       <main className="flex-1 flex flex-col items-center p-8">
         {selectedHistory ? (
-          <ShipmentHistory proNumber={selectedHistory.proNumber} events={selectedHistory.events} />
+          <ShipmentHistory
+            key={selected as string}
+            proNumber={selectedHistory.proNumber}
+            events={selectedHistory.events}
+            showProgress={selectedHistory.showProgress}
+            pendingSteps={selectedHistory.pendingSteps}
+          />
         ) : (
           <>
             <h1 className="text-3xl font-bold mb-8 text-gray-800">
