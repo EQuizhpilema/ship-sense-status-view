@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
+import { ShipmentHistory, type HistoryEvent } from "@/components/ShipmentHistory";
 import { Check, Calendar, Triangle } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
 const Index = () => {
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<number | null | "history">(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
   const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
@@ -225,35 +226,55 @@ const Index = () => {
     },
   ];
 
+  // Shipment history — add new events to the top of this list
+  const historyEvents: HistoryEvent[] = [
+    { date: "10/09/26", time: "1:25pm", event: "Trailer Departed", location: "Northlake, IL" },
+    { date: "10/09/26", time: "10:23am", event: "Loaded On Trailer", location: "Northlake, IL" },
+    { date: "10/08/26", time: "7:11am", event: "Scanned On Dock", location: "The Custom Companies" },
+    { date: "10/08/26", time: "12:48am", event: "Freight Unloaded", location: "Northlake, IL" },
+    { date: "10/08/26", time: "12:47am", event: "Reclass", location: "In Transit" },
+    { date: "10/07/26", time: "2:54pm", event: "Picked Up", location: "Lake Zurich, IL" },
+    { date: "10/07/26", time: "4:27am", event: "Appointment Required For Delivery", location: "Pending" },
+    { date: "10/07/26", time: "4:08am", event: "Pickup Request Received", location: "Customer Care Center" },
+  ];
+
+  const navBtn = (active: boolean) =>
+    `text-left text-sm px-3 py-2 rounded ${active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`;
+
   return (
     <div className="min-h-screen flex bg-gray-50">
       <aside className="w-72 shrink-0 border-r border-gray-200 bg-white p-4 sticky top-0 h-screen overflow-y-auto">
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-3 px-2">Status Cards</h2>
         <nav className="flex flex-col gap-1">
-          <button
-            onClick={() => setSelected(null)}
-            className={`text-left text-sm px-3 py-2 rounded ${selected === null ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`}
-          >
+          <button onClick={() => setSelected(null)} className={navBtn(selected === null)}>
             Show All
           </button>
           {cards.map((c, i) => (
-            <button
-              key={c.label + i}
-              onClick={() => setSelected(i)}
-              className={`text-left text-sm px-3 py-2 rounded ${selected === i ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`}
-            >
+            <button key={c.label + i} onClick={() => setSelected(i)} className={navBtn(selected === i)}>
               {c.label}
             </button>
           ))}
         </nav>
+        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mt-6 mb-3 px-2">Shipment History</h2>
+        <nav className="flex flex-col gap-1">
+          <button onClick={() => setSelected("history")} className={navBtn(selected === "history")}>
+            Shipment History - 17560215
+          </button>
+        </nav>
       </aside>
       <main className="flex-1 flex flex-col items-center p-8">
-        <h1 className="text-3xl font-bold mb-8 text-gray-800">
-          {selected === null ? "Detailed Shipment Tracking Status Cards" : cards[selected].label}
-        </h1>
-        <div className="flex flex-wrap gap-6 justify-center">
-          {selected === null ? cards.map((c, i) => <div key={i}>{c.node}</div>) : cards[selected].node}
-        </div>
+        {selected === "history" ? (
+          <ShipmentHistory proNumber="17560215" events={historyEvents} />
+        ) : (
+          <>
+            <h1 className="text-3xl font-bold mb-8 text-gray-800">
+              {selected === null ? "Detailed Shipment Tracking Status Cards" : cards[selected].label}
+            </h1>
+            <div className="flex flex-wrap gap-6 justify-center">
+              {selected === null ? cards.map((c, i) => <div key={i}>{c.node}</div>) : cards[selected].node}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );
