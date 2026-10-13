@@ -35,6 +35,8 @@ interface ShipmentCardProps {
     state?: string;
   };
   iconClassName?: string;
+  title?: string;
+  subtitle?: string;
 }
 
 export function ShipmentCard({
@@ -50,7 +52,9 @@ export function ShipmentCard({
   arrivalTime,
   departureTime,
   lastLocation,
-  iconClassName
+  iconClassName,
+  title,
+  subtitle
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
   const isTerminal = /terminal|network/.test(status.toLowerCase());
@@ -62,7 +66,9 @@ export function ShipmentCard({
             status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" : "bg-gray-900 p-2 rounded-sm")}>
             {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-white" /> : <Truck className="h-5 w-5 text-white" />}
           </div>
-          <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(status)}</h2>
+          <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(title ?? status)}</h2>
+          
+          {subtitle && <p className="text-sm text-gray-600">{subtitle}</p>}
           
           {statusDetail && (
             <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">
