@@ -204,8 +204,8 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIcon}
           etaLabel="Estimated Delivery"
-          shipFromAddress={{ city: "CHINO", state: "CA", zip: "" }}
-          deliveryAddress={{ city: "SALT LAKE CITY", state: "UT", zip: "" }}
+          shipFromAddress={{ name: "HIPCO CHINO DISTRIBUTION", street: "14480 YORBA AVE", city: "CHINO", state: "CA", zip: "91710" }}
+          deliveryAddress={{ name: "HIPCO 020", street: "1907 W INDIANA AVE", city: "SALT LAKE CITY", state: "UT", zip: "84104" }}
           lastLocation={{ city: "Salt Lake City", state: "UT" }}
         />
       ),
