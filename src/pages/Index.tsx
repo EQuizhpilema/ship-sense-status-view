@@ -261,7 +261,41 @@ const Index = () => {
         />
       ),
     },
+    {
+      label: "At Origin Terminal (Sterling Plating)",
+      node: (
+        <ShipmentCard
+          status="At Origin Terminal"
+          date="Thursday, October 8 5:02pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIconBare}
+          iconClassName="bg-transparent p-0"
+          shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
+          deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
+          lastLocation={{ city: "Northlake", state: "IL" }}
+        />
+      ),
+    },
+    {
+      label: "In Transit (Sterling Plating)",
+      node: (
+        <ShipmentCard
+          status="In Transit, freight moving through carrier network"
+          title="In Transit"
+          subtitle="Freight moving through carrier network"
+          date="Thursday, October 8 5:02pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
+          deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
+          lastLocation={{ city: "Northlake", state: "IL" }}
+        />
+      ),
+    },
   ];
+
 
   // Shipment histories — add new events to the top of each list
   const histories: { proNumber: string; events: HistoryEvent[] }[] = [
