@@ -204,7 +204,7 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIconBare}
           iconClassName="bg-transparent p-0"
-          etaLabel="Estimated Delivery Date"
+          etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
           deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
           lastLocation={{ city: "The Custom Companies" }}
