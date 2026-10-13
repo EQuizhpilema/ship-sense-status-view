@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
 const Index = () => {
-  const [selected, setSelected] = useState<number | null | "history">(null);
+  const [selected, setSelected] = useState<number | null | `history-${number}`>(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
   const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
@@ -263,20 +263,41 @@ const Index = () => {
     },
   ];
 
-  // Shipment history — add new events to the top of this list
-  const historyEvents: HistoryEvent[] = [
-    { date: "10/09/26", time: "1:25pm", event: "Trailer Departed", location: "Northlake, IL" },
-    { date: "10/09/26", time: "10:23am", event: "Loaded On Trailer", location: "Northlake, IL" },
-    { date: "10/08/26", time: "7:11am", event: "Scanned On Dock", location: "The Custom Companies" },
-    { date: "10/08/26", time: "12:48am", event: "Freight Unloaded", location: "Northlake, IL" },
-    { date: "10/08/26", time: "12:47am", event: "Reclass", location: "In Transit" },
-    { date: "10/07/26", time: "2:54pm", event: "Picked Up", location: "Lake Zurich, IL" },
-    { date: "10/07/26", time: "4:27am", event: "Appointment Required For Delivery", location: "Pending" },
-    { date: "10/07/26", time: "4:08am", event: "Pickup Request Received", location: "Customer Care Center" },
+  // Shipment histories — add new events to the top of each list
+  const histories: { proNumber: string; events: HistoryEvent[] }[] = [
+    {
+      proNumber: "17560215",
+      events: [
+        { date: "10/09/26", time: "1:25pm", event: "Trailer Departed", location: "Northlake, IL" },
+        { date: "10/09/26", time: "10:23am", event: "Loaded On Trailer", location: "Northlake, IL" },
+        { date: "10/08/26", time: "7:11am", event: "Scanned On Dock", location: "The Custom Companies" },
+        { date: "10/08/26", time: "12:48am", event: "Freight Unloaded", location: "Northlake, IL" },
+        { date: "10/08/26", time: "12:47am", event: "Reclass", location: "In Transit" },
+        { date: "10/07/26", time: "2:54pm", event: "Picked Up", location: "Lake Zurich, IL" },
+        { date: "10/07/26", time: "4:27am", event: "Appointment Required For Delivery", location: "Pending" },
+        { date: "10/07/26", time: "4:08am", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
+    {
+      proNumber: "17561748",
+      events: [
+        { date: "10/10/26", time: "9:11am", event: "Trailer Departed For Salt Lake City, Ut", location: "Northlake, IL" },
+        { date: "10/09/26", time: "8:23am", event: "Loaded On Trailer", location: "Northlake, IL" },
+        { date: "10/08/26", time: "5:02pm", event: "Freight Unloaded", location: "Northlake, IL" },
+        { date: "10/08/26", time: "5:01pm", event: "Reclass", location: "In Transit" },
+        { date: "10/08/26", time: "1:35pm", event: "Picked Up", location: "Harwood Heights, IL" },
+        { date: "10/08/26", time: "4:08am", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
   ];
 
   const navBtn = (active: boolean) =>
     `text-left text-sm px-3 py-2 rounded ${active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`;
+
+  const selectedHistory =
+    typeof selected === "string" && selected.startsWith("history-")
+      ? histories[Number(selected.slice("history-".length))]
+      : null;
 
   return (
     <div className="min-h-screen flex bg-gray-50">
@@ -294,14 +315,16 @@ const Index = () => {
         </nav>
         <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mt-6 mb-3 px-2">Shipment History</h2>
         <nav className="flex flex-col gap-1">
-          <button onClick={() => setSelected("history")} className={navBtn(selected === "history")}>
-            Shipment History - 17560215
-          </button>
+          {histories.map((h, i) => (
+            <button key={h.proNumber} onClick={() => setSelected(`history-${i}`)} className={navBtn(selected === `history-${i}`)}>
+              Shipment History - {h.proNumber}
+            </button>
+          ))}
         </nav>
       </aside>
       <main className="flex-1 flex flex-col items-center p-8">
-        {selected === "history" ? (
-          <ShipmentHistory proNumber="17560215" events={historyEvents} />
+        {selectedHistory ? (
+          <ShipmentHistory proNumber={selectedHistory.proNumber} events={selectedHistory.events} />
         ) : (
           <>
             <h1 className="text-3xl font-bold mb-8 text-gray-800">
