@@ -398,19 +398,9 @@ const Index = () => {
       ],
     },
   ];
-  histories.push({
-    ...histories[2],
-    label: "(Progress)",
-    showProgress: true,
-    pendingSteps: [
-      { label: "Delivered" },
-      { label: "Out for Delivery" },
-      { label: "Delivery Appointment Needed", note: "Awaiting appointment with consignee", tone: "amber" },
-    ],
-  });
 
-  // Progress copies of the other histories — the appointment step only
-  // appears when the shipment history itself flags an appointment
+  // Progress copies — the appointment step only appears when the shipment
+  // history itself flags an appointment
   const needsAppointment = (h: (typeof histories)[number]) =>
     h.events.some((e) => e.event.toLowerCase() === "appointment required for delivery");
   const progressPending = (h: (typeof histories)[number]): PendingStep[] => [
@@ -423,6 +413,7 @@ const Index = () => {
   histories.push(
     { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0]) },
     { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1]) },
+    { ...histories[2], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[2]) },
   );
 
   const navBtn = (active: boolean) =>
