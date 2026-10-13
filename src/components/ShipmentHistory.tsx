@@ -21,7 +21,7 @@ interface ShipmentHistoryProps {
   showProgress?: boolean;
   /** Upcoming steps shown as ghost rows at the top (nearest step last) */
   pendingSteps?: PendingStep[];
-  /** Estimated delivery date shown on the Delivered ghost row */
+  /** Estimated delivery date shown on the Out for Delivery ghost row */
   etaDate?: string;
 }
 
@@ -74,10 +74,8 @@ export function ShipmentHistory({ proNumber, events, showProgress = false, pendi
                 <div><p>Upcoming</p></div>
                 <div>
                   {s.note && <p className={s.tone === "amber" ? "text-amber-700" : ""}>{s.note}</p>}
-                  {etaDate && s.label.toLowerCase() === "delivered" && (
-                    <p className="text-xs text-gray-500">
-                      Estimated Delivery <span className="font-medium text-gray-700">{etaDate}</span>
-                    </p>
+                  {etaDate && s.label.toLowerCase() === "out for delivery" && (
+                    <p>Estimated Delivery {etaDate}</p>
                   )}
                 </div>
                 <div className="relative flex items-center justify-end self-stretch pr-8">
