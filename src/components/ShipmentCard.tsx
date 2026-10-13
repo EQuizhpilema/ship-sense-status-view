@@ -80,9 +80,11 @@ export function ShipmentCard({
             status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" : "bg-gray-900 p-2 rounded-sm")}>
             {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-white" /> : <Truck className="h-5 w-5 text-white" />}
           </div>
-          <h2 className="mt-3 text-lg font-bold text-gray-900">{toTitleCase(title ?? status)}</h2>
-          
-          {subtitle && <p className="text-sm text-gray-600">{subtitle}</p>}
+          <div className="mt-3 flex flex-col items-center">
+            <h2 className="text-lg font-bold leading-tight text-gray-900">{toTitleCase(title ?? status)}</h2>
+            {subtitle && <p className="mt-0.5 text-xs font-medium text-gray-500">{subtitle}</p>}
+          </div>
+          {subtitle && <div className="h-1" aria-hidden="true" />}
           
           {statusDetail && (
             <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">
