@@ -359,6 +359,7 @@ const Index = () => {
     events: HistoryEvent[];
     showProgress?: boolean;
     pendingSteps?: PendingStep[];
+    etaDate?: string;
   }[] = [
     {
       proNumber: "17560215",
@@ -411,9 +412,9 @@ const Index = () => {
       : []),
   ];
   histories.push(
-    { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0]) },
-    { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1]) },
-    { ...histories[2], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[2]) },
+    { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0]), etaDate: "Monday, October 12" },
+    { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1]), etaDate: "Wednesday, October 14" },
+    { ...histories[2], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[2]), etaDate: "Tuesday, October 13" },
   );
 
   const navBtn = (active: boolean) =>
@@ -455,6 +456,7 @@ const Index = () => {
             events={selectedHistory.events}
             showProgress={selectedHistory.showProgress}
             pendingSteps={selectedHistory.pendingSteps}
+            etaDate={selectedHistory.etaDate}
           />
         ) : (
           <>
