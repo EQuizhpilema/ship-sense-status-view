@@ -362,6 +362,19 @@ const Index = () => {
         { date: "10/08/26", time: "4:08am", event: "Pickup Request Received", location: "Customer Care Center" },
       ],
     },
+    {
+      proNumber: "33776674",
+      events: [
+        { date: "10/12/26", time: "8:00am", event: "Trailer Arrived", location: "Salt Lake City, UT" },
+        { date: "10/11/26", time: "8:00pm", event: "Trailer Departed For Salt Lake City, Ut", location: "Santa Fe Springs, CA" },
+        { date: "10/10/26", time: "1:57pm", event: "Loaded On Trailer", location: "Santa Fe Springs, CA" },
+        { date: "10/10/26", time: "1:52am", event: "Reclass", location: "In Transit" },
+        { date: "10/09/26", time: "11:57pm", event: "Freight Unloaded", location: "Santa Fe Springs, CA" },
+        { date: "10/09/26", time: "11:52pm", event: "Scanned On Dock", location: "The Custom Companies" },
+        { date: "10/09/26", time: "3:04pm", event: "Picked Up", location: "Chino, CA" },
+        { date: "10/09/26", time: "2:03pm", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
   ];
 
   const navBtn = (active: boolean) =>
