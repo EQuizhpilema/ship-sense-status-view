@@ -272,7 +272,6 @@ const Index = () => {
           customIcon={networkIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
-
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
@@ -291,7 +290,43 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIcon}
           etaLabel="Estimated Delivery"
-
+          shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
+          deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
+          lastLocation={{ city: "Northlake", state: "IL" }}
+        />
+      ),
+    },
+    {
+      label: "At Origin Terminal (Sterling Plating, Revised ETA)",
+      node: (
+        <ShipmentCard
+          status="At Origin Terminal"
+          date="Friday, October 16"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIconBare}
+          iconClassName="bg-transparent p-0"
+          etaLabel="Revised Estimated Delivery"
+          alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
+          shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
+          deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
+          lastLocation={{ city: "Northlake", state: "IL" }}
+        />
+      ),
+    },
+    {
+      label: "In Transit (Sterling Plating, Revised ETA)",
+      node: (
+        <ShipmentCard
+          status="In Transit, freight moving through carrier network"
+          title="In Transit"
+          subtitle="Freight moving through carrier network"
+          date="Friday, October 16"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          etaLabel="Revised Estimated Delivery"
+          alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
