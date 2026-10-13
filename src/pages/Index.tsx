@@ -266,11 +266,13 @@ const Index = () => {
       node: (
         <ShipmentCard
           status="At Origin Terminal"
-          date="Thursday, October 8 5:02pm"
+          date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
           customIcon={networkIconBare}
           iconClassName="bg-transparent p-0"
+          etaLabel="Estimated Delivery"
+
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
@@ -284,10 +286,12 @@ const Index = () => {
           status="In Transit, freight moving through carrier network"
           title="In Transit"
           subtitle="Freight moving through carrier network"
-          date="Thursday, October 8 5:02pm"
+          date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
           customIcon={networkIcon}
+          etaLabel="Estimated Delivery"
+
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
