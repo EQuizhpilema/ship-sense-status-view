@@ -210,10 +210,12 @@ const Index = () => {
       ),
     },
     {
-      label: "In Transit, Freight Moving Through Carrier Network",
+      label: "In Transit, Freight Moving Through Network",
       node: (
         <ShipmentCard
           status="In Transit, freight moving through carrier network"
+          title="In Transit"
+          subtitle="Freight moving through carrier network"
           date="Tuesday, October 13 12:00pm"
           timeWindow=""
           appointmentDetails={null}
