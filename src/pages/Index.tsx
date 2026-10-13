@@ -409,6 +409,22 @@ const Index = () => {
     ],
   });
 
+  // Progress copies of the other histories — the appointment step only
+  // appears when the shipment history itself flags an appointment
+  const needsAppointment = (h: (typeof histories)[number]) =>
+    h.events.some((e) => e.event.toLowerCase() === "appointment required for delivery");
+  const progressPending = (h: (typeof histories)[number]): PendingStep[] => [
+    { label: "Delivered" },
+    { label: "Out for Delivery" },
+    ...(needsAppointment(h)
+      ? [{ label: "Delivery Appointment Needed", note: "Awaiting appointment with consignee", tone: "amber" as const }]
+      : []),
+  ];
+  histories.push(
+    { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0]) },
+    { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1]) },
+  );
+
   const navBtn = (active: boolean) =>
     `text-left text-sm px-3 py-2 rounded ${active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`;
 
