@@ -34,6 +34,7 @@ interface ShipmentCardProps {
     city: string;
     state?: string;
   };
+  etaLabel?: string;
   iconClassName?: string;
   title?: string;
   subtitle?: string;
@@ -56,6 +57,7 @@ export function ShipmentCard({
   arrivalTime,
   departureTime,
   lastLocation,
+  etaLabel,
   iconClassName,
   title,
   subtitle,
@@ -102,7 +104,10 @@ export function ShipmentCard({
               <p className="text-base font-medium text-gray-900">Tuesday, July 1</p>
             </>}
           
-          {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <p className="text-base font-medium text-gray-900">{date}</p>}
+          {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <>
+              {etaLabel && <p className="text-sm text-gray-600">{etaLabel}</p>}
+              <p className="text-base font-medium text-gray-900">{date}</p>
+            </>}
           
           {arrivalTime && (
             <div className="flex justify-center gap-8 w-full">
