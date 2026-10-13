@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
 import { Check, Calendar, Triangle } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
 const Index = () => {
+  const [selected, setSelected] = useState<number | null>(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
   const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
@@ -153,16 +155,16 @@ const Index = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">Detailed Shipment Tracking Status Cards</h1>
-      <div className="flex flex-wrap gap-6 justify-center">
-        <ShipmentCard {...shipmentData1} />
-        <ShipmentCard {...shipmentData2} customIcon={networkIcon} />
-        <ShipmentCard {...shipmentData3} customIcon={<Check />} />
-        <ShipmentCard {...shipmentData4} customIcon={networkIcon} />
-        <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
-        <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} />
+  const cards: { label: string; node: React.ReactNode }[] = [
+    { label: "Out for Delivery", node: <ShipmentCard {...shipmentData1} /> },
+    { label: "In Transit", node: <ShipmentCard {...shipmentData2} customIcon={networkIcon} /> },
+    { label: "Delivered", node: <ShipmentCard {...shipmentData3} customIcon={<Check />} /> },
+    { label: "In Transit (with Appointment)", node: <ShipmentCard {...shipmentData4} customIcon={networkIcon} /> },
+    { label: "Delivery Appointment Date", node: <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} /> },
+    { label: "Delivery Exception", node: <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} /> },
+    {
+      label: "Arrived at Destination Terminal",
+      node: (
         <ShipmentCard
           status="Arrived at Destination Terminal"
           date="Monday, October 12 2:00pm"
@@ -173,6 +175,11 @@ const Index = () => {
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
         />
+      ),
+    },
+    {
+      label: "At Origin Terminal",
+      node: (
         <ShipmentCard
           status="At Origin Terminal"
           date="Thursday, October 8 7:43am"
@@ -184,28 +191,70 @@ const Index = () => {
           deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
           lastLocation={{ city: "The Custom Companies" }}
         />
-      <ShipmentCard
-        status="Transfer to Interline"
-        date="Friday, October 9 4:15pm"
-        timeWindow=""
-        appointmentDetails={null}
-        customIcon={networkIcon}
-        shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
-        deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
-        lastLocation={{ city: "The Custom Companies" }}
-      />
-      <ShipmentCard
-        status="In Transit, freight moving through carrier network"
-        date="Tuesday, October 13 12:00pm"
-        timeWindow=""
-        appointmentDetails={null}
-        customIcon={networkIcon}
-        shipFromAddress={{ name: "STERLING SPRING LLC", street: "5432 W 54TH STREET", city: "CHICAGO", state: "IL", zip: "60638" }}
-        deliveryAddress={{ name: "MOTORCAR PARTS & ACCESS", street: "2306 AVENIDA COSTA ESTE", city: "SAN DIEGO", state: "CA", zip: "92154" }}
-        lastLocation={{ city: "San Diego", state: "CA" }}
-      />
-      </div>
-      <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
+      ),
+    },
+    {
+      label: "Transfer to Interline",
+      node: (
+        <ShipmentCard
+          status="Transfer to Interline"
+          date="Friday, October 9 4:15pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
+          deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
+          lastLocation={{ city: "The Custom Companies" }}
+        />
+      ),
+    },
+    {
+      label: "In Transit, Freight Moving Through Carrier Network",
+      node: (
+        <ShipmentCard
+          status="In Transit, freight moving through carrier network"
+          date="Tuesday, October 13 12:00pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          shipFromAddress={{ name: "STERLING SPRING LLC", street: "5432 W 54TH STREET", city: "CHICAGO", state: "IL", zip: "60638" }}
+          deliveryAddress={{ name: "MOTORCAR PARTS & ACCESS", street: "2306 AVENIDA COSTA ESTE", city: "SAN DIEGO", state: "CA", zip: "92154" }}
+          lastLocation={{ city: "San Diego", state: "CA" }}
+        />
+      ),
+    },
+  ];
+
+  return (
+    <div className="min-h-screen flex bg-gray-50">
+      <aside className="w-72 shrink-0 border-r border-gray-200 bg-white p-4 sticky top-0 h-screen overflow-y-auto">
+        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-3 px-2">Status Cards</h2>
+        <nav className="flex flex-col gap-1">
+          <button
+            onClick={() => setSelected(null)}
+            className={`text-left text-sm px-3 py-2 rounded ${selected === null ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`}
+          >
+            Show All
+          </button>
+          {cards.map((c, i) => (
+            <button
+              key={c.label + i}
+              onClick={() => setSelected(i)}
+              className={`text-left text-sm px-3 py-2 rounded ${selected === i ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"}`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </nav>
+      </aside>
+      <main className="flex-1 flex flex-col items-center p-8">
+        <h1 className="text-3xl font-bold mb-8 text-gray-800">
+          {selected === null ? "Detailed Shipment Tracking Status Cards" : cards[selected].label}
+        </h1>
+        <div className="flex flex-wrap gap-6 justify-center">
+          {selected === null ? cards.map((c, i) => <div key={i}>{c.node}</div>) : cards[selected].node}
+        </div>
+      </main>
     </div>
   );
 };
