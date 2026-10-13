@@ -1,4 +1,7 @@
 # Roadmap
 
-- Logo mark for the in-network statuses (At Origin Terminal, In Transit, Transfer to Interline, Arrived at Destination Terminal) — must read as freight moving through the network and stay distinct from the truck used for Out for Delivery.
-  - Concept now: a truck in motion. Generate two distinct marks, inspect them, let the user pick, then apply to the four statuses and set the favicon from the chosen mark.
+- Icon for the in-network statuses (At Origin Terminal, In Transit, Transfer to Interline, Arrived at Destination Terminal): pull a stock icon from Font Awesome / Material Symbols — a truck in motion — instead of the generated marks, and keep it distinct from the plain truck used for Out for Delivery.
+  - Verify the icon name exists in the package, install it, apply it to the existing cards, check it in the preview.
+  - No "Transfer to Interline" card exists yet — offer to add one.
+  - Generated candidate PNGs in src/assets are now unused — offer to delete them.
+- Favicon: set from the chosen mark once the user confirms the direction.
