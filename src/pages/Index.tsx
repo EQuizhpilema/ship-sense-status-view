@@ -184,8 +184,18 @@ const Index = () => {
           deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
           lastLocation={{ city: "The Custom Companies" }}
         />
-        <ShipmentCard
-          status="Transfer to Interline"
+      <ShipmentCard
+        status="In Transit, freight moving through carrier network"
+        date="Tuesday, October 13 12:00pm"
+        timeWindow=""
+        appointmentDetails={null}
+        customIcon={networkIcon}
+        shipFromAddress={{ name: "STERLING SPRING LLC", street: "5432 W 54TH STREET", city: "CHICAGO", state: "IL", zip: "60638" }}
+        deliveryAddress={{ name: "MOTORCAR PARTS & ACCESS", street: "2306 AVENIDA COSTA ESTE", city: "SAN DIEGO", state: "CA", zip: "92154" }}
+        lastLocation={{ city: "San Diego", state: "CA" }}
+      />
+      <ShipmentCard
+        status="Transfer to Interline"
           date="Friday, October 9 4:15pm"
           timeWindow=""
           appointmentDetails={null}
