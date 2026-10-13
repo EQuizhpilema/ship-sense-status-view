@@ -45,7 +45,7 @@ export function ShipmentHistory({ proNumber, events }: ShipmentHistoryProps) {
                   const ev = e.event.toLowerCase();
                   if (ev === "freight unloaded")
                     return <span className="bg-gray-100 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">At Origin Terminal</span>;
-                  if (ev === "trailer departed")
+                  if (ev.startsWith("trailer departed"))
                     return <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">In Transit</span>;
                   if (ev === "appointment required for delivery")
                     return <span className="bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded">Delivery Appointment Needed</span>;
