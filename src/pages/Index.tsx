@@ -1,7 +1,13 @@
 import { ShipmentCard } from "@/components/ShipmentCard";
-import { Check, Calendar, Triangle, Package } from "lucide-react";
+import { Check, Calendar, Triangle } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
 const Index = () => {
+  // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
+  const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
+  const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
+
   const shipmentData1 = {
     status: "Out for delivery",
     date: "Thursday, January 30",
@@ -152,9 +158,9 @@ const Index = () => {
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Detailed Shipment Tracking Status Cards</h1>
       <div className="flex flex-wrap gap-6 justify-center">
         <ShipmentCard {...shipmentData1} />
-        <ShipmentCard {...shipmentData2} />
+        <ShipmentCard {...shipmentData2} customIcon={networkIcon} />
         <ShipmentCard {...shipmentData3} customIcon={<Check />} />
-        <ShipmentCard {...shipmentData4} />
+        <ShipmentCard {...shipmentData4} customIcon={networkIcon} />
         <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
         <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} />
         <ShipmentCard
@@ -162,6 +168,7 @@ const Index = () => {
           date="Monday, October 12 2:00pm"
           timeWindow=""
           appointmentDetails={null}
+          customIcon={networkIcon}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
@@ -171,8 +178,18 @@ const Index = () => {
           date="Thursday, October 8 7:43am"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={<Package className="h-9 w-9 text-gray-700" />}
+          customIcon={networkIconBare}
           iconClassName="bg-transparent p-0"
+          shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
+          deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
+          lastLocation={{ city: "The Custom Companies" }}
+        />
+        <ShipmentCard
+          status="Transfer to Interline"
+          date="Friday, October 9 4:15pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
           shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
           deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
           lastLocation={{ city: "The Custom Companies" }}
