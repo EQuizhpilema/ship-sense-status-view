@@ -157,6 +157,15 @@ const Index = () => {
         <ShipmentCard {...shipmentData4} />
         <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} />
         <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} />
+        <ShipmentCard
+          status="Arrived at Destination Terminal"
+          date="Monday, October 12 2:00pm"
+          timeWindow=""
+          appointmentDetails={null}
+          shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
+          deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
+          lastLocation={{ city: "Woodbridge", state: "NJ" }}
+        />
       </div>
       <p className="mt-8 text-gray-500 text-sm">Track your packages in real-time with accurate delivery updates</p>
     </div>
