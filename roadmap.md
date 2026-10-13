@@ -1,7 +1,6 @@
 # Roadmap
 
-- Icon for the in-network statuses (At Origin Terminal, In Transit, Transfer to Interline, Arrived at Destination Terminal): pull a stock icon from Font Awesome / Material Symbols — a truck in motion — instead of the generated marks, and keep it distinct from the plain truck used for Out for Delivery.
-  - Verify the icon name exists in the package, install it, apply it to the existing cards, check it in the preview.
-  - No "Transfer to Interline" card exists yet — offer to add one.
-  - Generated candidate PNGs in src/assets are now unused — offer to delete them.
-- Favicon: set from the chosen mark once the user confirms the direction.
+- Done: applied Font Awesome **truck-fast** (truck with speed lines) to the in-network statuses — At Origin Terminal, both In Transit cards, Arrived at Destination Terminal, and a new Transfer to Interline card. Out for Delivery keeps the plain truck. Verified in the preview: glyph renders on all five, no page errors, build OK.
+- Open: set the favicon from the chosen mark — waiting for the user to confirm truck-fast is the pick.
+- Open: delete the unused generated candidate PNGs in src/assets (logo-network-route, logo-interline-relay, logo-truck-motion-route/-chevrons and their -v2 versions) — waiting for go-ahead.
+- Open: At Origin Terminal shows the truck bare on white while the other three sit in a dark badge — unify if the user wants.
