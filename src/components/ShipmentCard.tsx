@@ -53,7 +53,7 @@ export function ShipmentCard({
   iconClassName
 }: ShipmentCardProps) {
   const toTitleCase = (str: string) => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-  const isTerminal = status.toLowerCase().includes("terminal");
+  const isTerminal = /terminal|network/.test(status.toLowerCase());
 
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
