@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
 import { ShipmentHistory, type HistoryEvent, type PendingStep } from "@/components/ShipmentHistory";
-import { Check, Calendar, Triangle } from "lucide-react";
+import { Check, Calendar, Triangle, Building2 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
