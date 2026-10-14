@@ -241,7 +241,7 @@ const Index = () => {
           customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
-          alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
+          alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
           deliveryAddress={{ name: "VOSS LIGHTING", street: "1251 RED FOX RD", city: "ARDEN HILLS", state: "MN", zip: "55112" }}
           lastLocation={{ city: "The Custom Companies" }}
@@ -326,7 +326,7 @@ const Index = () => {
           customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
-          alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
+          alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
@@ -345,7 +345,7 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIcon}
           etaLabel="Revised Estimated Delivery"
-          alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
+          alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
