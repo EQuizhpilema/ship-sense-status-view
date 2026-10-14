@@ -467,6 +467,15 @@ const Index = () => {
         { date: "10/08/26", time: "11:07am", event: "Pickup Request Received", location: "Customer Care Center" },
       ],
     },
+    {
+      proNumber: "33781701",
+      events: [
+        { date: "10/14/26", time: "2:12am", event: "Reclass", location: "In Transit" },
+        { date: "10/13/26", time: "11:45pm", event: "Freight Unloaded", location: "Santa Fe Springs, CA" },
+        { date: "10/13/26", time: "1:19pm", event: "Picked Up", location: "Cypress, CA" },
+        { date: "10/13/26", time: "7:24am", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
   ];
 
   // Progress copies — the appointment step only appears when the shipment
