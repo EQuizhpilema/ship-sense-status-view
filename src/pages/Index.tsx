@@ -200,7 +200,7 @@ const Index = () => {
       node: (
         <ShipmentCard
           status="Arrived at Destination Terminal"
-          date="Tuesday, October 13"
+          date="Thursday, October 14"
           timeWindow=""
           appointmentDetails={null}
           customIcon={terminalIcon}
