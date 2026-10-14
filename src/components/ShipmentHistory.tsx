@@ -11,7 +11,7 @@ export interface HistoryEvent {
 export interface PendingStep {
   label: string;
   note?: string;
-  tone?: "amber" | "gray";
+  tone?: "amber" | "gray" | "green";
   /** Destination terminal ETA, shown as plain blue text */
   info?: string;
 }
@@ -27,15 +27,22 @@ interface ShipmentHistoryProps {
   etaDate?: string;
 }
 
-const pill = "text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap";
+// Every status pill in the history uses the same dark-yellow treatment
+// (pale field, thin amber border, dark amber text). Delivered is the one
+// exception and renders as a green pill.
+const pill = "text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap border";
+const amber = "bg-amber-50 text-amber-700 border-amber-400";
+const green = "bg-green-50 text-green-700 border-green-500";
+const amberDot = "bg-amber-500";
 
 function badgeFor(event: string) {
   const ev = event.toLowerCase();
-  if (ev === "freight unloaded") return { label: "At Origin Terminal", cls: "bg-gray-100 text-gray-800", dot: "bg-gray-500" };
-  if (ev.startsWith("trailer departed")) return { label: "In Transit", cls: "bg-blue-100 text-blue-800", dot: "bg-blue-600" };
-  if (ev.startsWith("trailer arrived")) return { label: "Arrived at Destination Terminal", cls: "bg-teal-100 text-teal-800", dot: "bg-teal-600" };
-  if (ev === "picked up") return { label: "Picked Up", cls: "bg-green-100 text-green-800", dot: "bg-green-600" };
-  if (ev === "appointment required for delivery") return { label: "Delivery Appointment Needed", cls: "bg-amber-100 text-amber-800 !rounded", dot: "bg-amber-500" };
+  if (ev === "freight unloaded") return { label: "At Origin Terminal", cls: amber, dot: amberDot };
+  if (ev.startsWith("trailer departed")) return { label: "In Transit", cls: amber, dot: amberDot };
+  if (ev.startsWith("trailer arrived")) return { label: "Arrived at Destination Terminal", cls: amber, dot: amberDot };
+  if (ev === "picked up") return { label: "Picked Up", cls: amber, dot: amberDot };
+  if (ev === "appointment required for delivery") return { label: "Delivery Appointment Needed", cls: amber, dot: amberDot };
+  if (ev === "delivered") return { label: "Delivered", cls: green, dot: "bg-green-600" };
   return null;
 }
 
@@ -83,8 +90,8 @@ export function ShipmentHistory({ proNumber, events, showProgress = false, pendi
                 </div>
                 <div className="relative flex items-center justify-end self-stretch pr-8">
                   <span className={`absolute right-[11px] bottom-[-13px] border-l-2 border-dashed border-gray-300 ${i === 0 ? "top-1/2" : "top-[-13px]"}`} />
-                  <span className={`absolute right-[6px] h-3 w-3 rounded-full border-2 border-dashed bg-white ${s.tone === "amber" ? "border-amber-500" : "border-gray-400"}`} />
-                  <span className={`${pill} border border-dashed ${s.tone === "amber" ? "border-amber-400 text-amber-700 bg-amber-50" : "border-gray-300 text-gray-500"}`}>
+                  <span className={`absolute right-[6px] h-3 w-3 rounded-full border-2 border-dashed bg-white ${s.tone === "amber" ? "border-amber-500" : s.tone === "green" ? "border-green-500" : "border-gray-400"}`} />
+                  <span className={`${pill} border border-dashed ${s.tone === "amber" ? "border-amber-400 text-amber-700 bg-amber-50" : s.tone === "green" ? "border-green-400 text-green-700 bg-green-50" : "border-gray-300 text-gray-500"}`}>
                     {s.label}
                   </span>
                 </div>
