@@ -101,17 +101,20 @@ export function ShipmentCard({
           
           {status.toLowerCase() === "in transit" && <>
               <p className="text-sm text-gray-600">Estimated Delivery Date</p>
-              <p className="text-base font-medium text-gray-900">{date}</p>
+              <p className="mt-0.5 text-base font-medium text-gray-900">{date}</p>
+
             </>}
           
           {status.toLowerCase() === "delivery exception" && <>
               <p className="text-sm text-gray-600">Estimated Delivery</p>
-              <p className="text-base font-medium text-gray-900">Tuesday, July 1</p>
+              <p className="mt-0.5 text-base font-medium text-gray-900">Tuesday, July 1</p>
+
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <>
               {etaLabel && <p className="text-sm text-gray-600">{etaLabel}</p>}
-              <p className="text-base font-medium text-gray-900">{date}</p>
+              <p className={`text-base font-medium text-gray-900 ${etaLabel ? "mt-0.5" : ""}`}>{date}</p>
+
             </>}
 
           {linehaulEta && (
@@ -139,10 +142,11 @@ export function ShipmentCard({
           
           {signedBy && <p className="text-sm text-gray-600">Signed by: {signedBy}</p>}
           
-          {!signedBy && status.toLowerCase() === "out for delivery" && <div className="text-sm text-gray-600 space-y-2">
+          {!signedBy && status.toLowerCase() === "out for delivery" && <div className="text-sm text-gray-600">
               <p>Estimated Time of Arrival is Between</p>
-              <p>{timeWindow}</p>
+              <p className="mt-0.5">{timeWindow}</p>
             </div>}
+
         </div>
         
         {appointmentDetails && <div className="bg-green-50 p-3 rounded-sm text-xs">
