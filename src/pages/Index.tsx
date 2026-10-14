@@ -8,10 +8,10 @@ import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 const Index = () => {
   const [selected, setSelected] = useState<number | null | `history-${number}`>(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
-  const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
+  const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-gray-900" />;
   // Building mark: used for the terminal statuses (freight is at a facility, not moving)
-  const terminalIcon = <Building2 className="h-5 w-5 text-white" />;
-  const terminalIconBare = <Building2 className="h-8 w-8 text-gray-700" />;
+  const terminalIcon = <Building2 className="h-5 w-5 text-gray-900" />;
+  const terminalIconBare = <Building2 className="h-5 w-5 text-gray-900" />;
 
   const shipmentData1 = {
     status: "Out for delivery",
@@ -161,10 +161,10 @@ const Index = () => {
   const cards: { label: string; node: React.ReactNode }[] = [
     { label: "Out for Delivery", node: <ShipmentCard {...shipmentData1} /> },
     { label: "In Transit", node: <ShipmentCard {...shipmentData2} customIcon={networkIcon} /> },
-    { label: "Delivered", node: <ShipmentCard {...shipmentData3} customIcon={<Check />} /> },
+    { label: "Delivered", node: <ShipmentCard {...shipmentData3} customIcon={<Check className="h-6 w-6 text-green-600" />} /> },
     { label: "In Transit (with Appointment)", node: <ShipmentCard {...shipmentData4} customIcon={networkIcon} /> },
-    { label: "Delivery Appointment Date", node: <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-white" />} /> },
-    { label: "Delivery Exception", node: <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-white" />} /> },
+    { label: "Delivery Appointment Date", node: <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-6 w-6 text-gray-900" />} /> },
+    { label: "Delivery Exception", node: <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-6 w-6 text-red-500" />} /> },
     {
       label: "Arrived at Destination Terminal",
       node: (
