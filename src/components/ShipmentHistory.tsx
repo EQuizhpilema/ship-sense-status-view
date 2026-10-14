@@ -121,6 +121,9 @@ export function ShipmentHistory({ proNumber, events, showProgress = false, pendi
               </div>
             );
           })}
+          <p className="px-5 pt-4 text-xs text-gray-500">
+            You're viewing the latest available shipment updates — the same tracking information our customer service team sees.
+          </p>
         </div>
       )}
     </div>
