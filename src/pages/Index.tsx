@@ -405,16 +405,21 @@ const Index = () => {
   // history itself flags an appointment
   const needsAppointment = (h: (typeof histories)[number]) =>
     h.events.some((e) => e.event.toLowerCase() === "appointment required for delivery");
-  const progressPending = (h: (typeof histories)[number]): PendingStep[] => [
+  const reachedTerminal = (h: (typeof histories)[number]) =>
+    h.events.some((e) => e.event.toLowerCase().startsWith("trailer arrived"));
+  const progressPending = (h: (typeof histories)[number], terminalEta?: string): PendingStep[] => [
     { label: "Delivered" },
     { label: "Out for Delivery" },
     ...(needsAppointment(h)
       ? [{ label: "Delivery Appointment Needed", note: "Awaiting appointment with consignee", tone: "amber" as const }]
       : []),
+    ...(!reachedTerminal(h)
+      ? [{ label: "Arrived at Destination Terminal", info: terminalEta ? `Est. Arrival at Destination Terminal: ${terminalEta}` : undefined }]
+      : []),
   ];
   histories.push(
-    { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0]), etaDate: "Monday, October 12" },
-    { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1]), etaDate: "Wednesday, October 14" },
+    { ...histories[0], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[0], "Sunday, October 11"), etaDate: "Monday, October 12" },
+    { ...histories[1], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[1], "Tuesday, October 13, Salt Lake City, UT"), etaDate: "Wednesday, October 14" },
     { ...histories[2], label: "(Progress)", showProgress: true, pendingSteps: progressPending(histories[2]), etaDate: "Tuesday, October 13" },
   );
 

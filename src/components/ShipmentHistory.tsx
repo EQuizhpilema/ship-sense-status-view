@@ -12,6 +12,8 @@ export interface PendingStep {
   label: string;
   note?: string;
   tone?: "amber" | "gray";
+  /** Blue info badge text (e.g. destination terminal ETA) */
+  info?: string;
 }
 
 interface ShipmentHistoryProps {
@@ -74,6 +76,9 @@ export function ShipmentHistory({ proNumber, events, showProgress = false, pendi
                 <div><p>Upcoming</p></div>
                 <div>
                   {s.note && <p className={s.tone === "amber" ? "text-amber-700" : ""}>{s.note}</p>}
+                  {s.info && (
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">{s.info}</span>
+                  )}
                   {etaDate && s.label.toLowerCase() === "out for delivery" && (
                     <p>Estimated Delivery {etaDate}</p>
                   )}
