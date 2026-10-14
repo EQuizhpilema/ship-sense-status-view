@@ -114,7 +114,7 @@ export function ShipmentCard({
             </>}
 
           {linehaulEta && (
-            <div className="w-full rounded-md bg-blue-100 text-blue-900 px-3 py-2 text-center">
+            <div className="w-full rounded-md bg-gray-100 text-gray-800 px-3 py-2 text-center">
               <p className="text-xs font-medium">{linehaulEta.label ?? "Est. Arrival at Destination Terminal"}</p>
               <p className="text-sm font-semibold">{linehaulEta.date}</p>
               {linehaulEta.terminal && <p className="text-xs">{linehaulEta.terminal}</p>}
