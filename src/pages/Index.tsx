@@ -11,7 +11,6 @@ const Index = () => {
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-6 w-6 text-gray-700" />;
   // Building mark: used for the terminal statuses (freight is at a facility, not moving)
   const terminalIcon = <Building2 className="h-6 w-6 text-gray-700" />;
-  const terminalIconBare = <Building2 className="h-5 w-5 text-gray-900" />;
 
   const shipmentData1 = {
     status: "Out for delivery",
