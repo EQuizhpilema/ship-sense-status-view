@@ -101,19 +101,19 @@ export function ShipmentCard({
           
           {status.toLowerCase() === "in transit" && <>
               <p className="text-sm text-gray-600">Estimated Delivery Date</p>
-              <p className="mt-0.5 text-base font-medium text-gray-900">{date}</p>
+              <p className="!mt-0.5 text-base font-medium text-gray-900">{date}</p>
 
             </>}
           
           {status.toLowerCase() === "delivery exception" && <>
               <p className="text-sm text-gray-600">Estimated Delivery</p>
-              <p className="mt-0.5 text-base font-medium text-gray-900">Tuesday, July 1</p>
+              <p className="!mt-0.5 text-base font-medium text-gray-900">Tuesday, July 1</p>
 
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <>
               {etaLabel && <p className="text-sm text-gray-600">{etaLabel}</p>}
-              <p className={`text-base font-medium text-gray-900 ${etaLabel ? "mt-0.5" : ""}`}>{date}</p>
+              <p className={`text-base font-medium text-gray-900 ${etaLabel ? "!mt-0.5" : ""}`}>{date}</p>
 
             </>}
 
