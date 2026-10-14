@@ -35,6 +35,7 @@ interface ShipmentCardProps {
     state?: string;
   };
   etaLabel?: string;
+  linehaulEta?: { date: string; label?: string; terminal?: string };
   iconClassName?: string;
   title?: string;
   subtitle?: string;
@@ -58,6 +59,7 @@ export function ShipmentCard({
   departureTime,
   lastLocation,
   etaLabel,
+  linehaulEta,
   iconClassName,
   title,
   subtitle,
@@ -110,6 +112,14 @@ export function ShipmentCard({
               {etaLabel && <p className="text-sm text-gray-600">{etaLabel}</p>}
               <p className="text-base font-medium text-gray-900">{date}</p>
             </>}
+
+          {linehaulEta && (
+            <div className="w-full rounded-md bg-blue-100 text-blue-900 px-3 py-2 text-center">
+              <p className="text-xs font-medium">{linehaulEta.label ?? "Est. Arrival at Destination Terminal"}</p>
+              <p className="text-sm font-semibold">{linehaulEta.date}</p>
+              {linehaulEta.terminal && <p className="text-xs">{linehaulEta.terminal}</p>}
+            </div>
+          )}
           
           {arrivalTime && (
             <div className="flex justify-center gap-8 w-full">
