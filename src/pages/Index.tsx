@@ -428,7 +428,7 @@ const Index = () => {
   const reachedTerminal = (h: (typeof histories)[number]) =>
     h.events.some((e) => e.event.toLowerCase().startsWith("trailer arrived"));
   const progressPending = (h: (typeof histories)[number], terminalEta?: string): PendingStep[] => [
-    { label: "Delivered" },
+    { label: "Delivered", tone: "green" as const },
     { label: "Out for Delivery" },
     ...(needsAppointment(h)
       ? [{ label: "Delivery Appointment Needed", note: "Awaiting appointment with consignee", tone: "amber" as const }]
