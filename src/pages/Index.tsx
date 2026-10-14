@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
 import { ShipmentHistory, type HistoryEvent, type PendingStep } from "@/components/ShipmentHistory";
-import { Check, Calendar, Triangle } from "lucide-react";
+import { Check, Calendar, Triangle, Building2 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +9,9 @@ const Index = () => {
   const [selected, setSelected] = useState<number | null | `history-${number}`>(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
-  const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
+  // Building mark: used for the terminal statuses (freight is at a facility, not moving)
+  const terminalIcon = <Building2 className="h-5 w-5 text-white" />;
+  const terminalIconBare = <Building2 className="h-8 w-8 text-gray-700" />;
 
   const shipmentData1 = {
     status: "Out for delivery",
@@ -171,7 +173,7 @@ const Index = () => {
           date="Monday, October 12 2:00pm"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
@@ -186,7 +188,7 @@ const Index = () => {
           date="Monday, October 12 2:00pm"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           alertNote={{ text: "This delivery requires an appointment.", tone: "blue" }}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
@@ -202,7 +204,7 @@ const Index = () => {
           date="Tuesday, October 13"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "HIPCO CHINO DISTRIBUTION", street: "14480 YORBA AVE", city: "CHINO", state: "CA", zip: "91710" }}
           deliveryAddress={{ name: "HIPCO 020", street: "1907 W INDIANA AVE", city: "SALT LAKE CITY", state: "UT", zip: "84104" }}
@@ -218,7 +220,7 @@ const Index = () => {
           date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           linehaulEta={{ date: "Tuesday, October 13", terminal: "Minneapolis, MN" }}
@@ -236,7 +238,7 @@ const Index = () => {
           date="Friday, October 16"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
@@ -286,7 +288,7 @@ const Index = () => {
           date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
@@ -321,7 +323,7 @@ const Index = () => {
           date="Friday, October 16"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
