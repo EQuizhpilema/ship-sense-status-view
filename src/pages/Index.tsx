@@ -9,7 +9,6 @@ const Index = () => {
   const [selected, setSelected] = useState<number | null | `history-${number}`>(null);
   // Font Awesome "truck-fast": a truck in motion, used for the in-network statuses
   const networkIcon = <FontAwesomeIcon icon={faTruckFast} className="h-5 w-5 text-white" />;
-  const networkIconBare = <FontAwesomeIcon icon={faTruckFast} className="h-8 w-8 text-gray-700" />;
   // Building mark: used for the terminal statuses (freight is at a facility, not moving)
   const terminalIcon = <Building2 className="h-5 w-5 text-white" />;
   const terminalIconBare = <Building2 className="h-8 w-8 text-gray-700" />;
