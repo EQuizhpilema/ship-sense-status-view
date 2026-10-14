@@ -399,6 +399,26 @@ const Index = () => {
         { date: "10/09/26", time: "2:03pm", event: "Pickup Request Received", location: "Customer Care Center" },
       ],
     },
+    {
+      proNumber: "17550577",
+      events: [
+        { date: "10/14/26", time: "9:28am", event: "Driver Location", location: "Cuyahoga County, OH" },
+        { date: "10/14/26", time: "8:54am", event: "Driver Location", location: "Erie County, OH" },
+        { date: "10/14/26", time: "7:22am", event: "Driver Location", location: "Sandusky County, OH" },
+        { date: "10/14/26", time: "5:29am", event: "Driver Location", location: "Lucas County, OH" },
+        { date: "10/14/26", time: "4:29am", event: "Driver Location", location: "Williams County, OH" },
+        { date: "10/14/26", time: "3:56am", event: "Driver Location", location: "Lagrange County, IN" },
+        { date: "10/14/26", time: "2:54am", event: "Driver Location", location: "Elkhart County, IN" },
+        { date: "10/13/26", time: "8:48pm", event: "Driver Location", location: "Elkhart County, IN" },
+        { date: "10/13/26", time: "5:34pm", event: "Trailer Departed For Auburn, *", location: "Northlake, IL" },
+        { date: "10/13/26", time: "4:04pm", event: "Loaded On Trailer", location: "Northlake, IL" },
+        { date: "10/13/26", time: "11:01am", event: "Scanned On Dock", location: "The Custom Companies" },
+        { date: "10/08/26", time: "4:25pm", event: "Freight Unloaded", location: "Northlake, IL" },
+        { date: "10/08/26", time: "4:24pm", event: "Reclass", location: "In Transit" },
+        { date: "10/08/26", time: "1:50pm", event: "Picked Up", location: "Waukegan, IL" },
+        { date: "10/08/26", time: "9:53am", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
   ];
 
   // Progress copies — the appointment step only appears when the shipment
