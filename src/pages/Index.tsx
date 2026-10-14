@@ -453,6 +453,20 @@ const Index = () => {
         { date: "10/08/26", time: "9:53am", event: "Pickup Request Received", location: "Customer Care Center" },
       ],
     },
+    {
+      proNumber: "16889248",
+      events: [
+        { date: "10/12/26", time: "8:21am", event: "Delivered", location: "GRAND RAPIDS, MI" },
+        { date: "10/12/26", time: "2:09am", event: "Out For Delivery", location: "On Local Delivery Truck" },
+        { date: "10/09/26", time: "2:00pm", event: "Trailer Arrived", location: "Corunna, MI" },
+        { date: "10/09/26", time: "9:57am", event: "Trailer Departed", location: "Northlake, IL" },
+        { date: "10/09/26", time: "7:05am", event: "Loaded On Trailer", location: "Northlake, IL" },
+        { date: "10/08/26", time: "11:28pm", event: "Freight Unloaded", location: "Northlake, IL" },
+        { date: "10/08/26", time: "11:27pm", event: "Reclass", location: "In Transit" },
+        { date: "10/08/26", time: "1:04pm", event: "Picked Up", location: "Carol Stream, IL" },
+        { date: "10/08/26", time: "11:07am", event: "Pickup Request Received", location: "Customer Care Center" },
+      ],
+    },
   ];
 
   // Progress copies — the appointment step only appears when the shipment
