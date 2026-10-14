@@ -42,6 +42,7 @@ function badgeFor(event: string) {
   if (ev.startsWith("trailer arrived")) return { label: "Arrived at Destination Terminal", cls: amber, dot: amberDot };
   if (ev === "picked up") return { label: "Picked Up", cls: amber, dot: amberDot };
   if (ev === "appointment required for delivery") return { label: "Delivery Appointment Needed", cls: amber, dot: amberDot };
+  if (ev === "out for delivery") return { label: "Out For Delivery", cls: amber, dot: amberDot };
   if (ev === "delivered") return { label: "Delivered", cls: green, dot: "bg-green-600" };
   return null;
 }
