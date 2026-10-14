@@ -266,7 +266,6 @@ const Index = () => {
         <ShipmentCard
           status="In Transit, freight moving through carrier network"
           title="In Transit"
-          subtitle="Freight moving through carrier network"
           date="Tuesday, October 13 12:00pm"
           timeWindow=""
           appointmentDetails={null}
@@ -299,7 +298,6 @@ const Index = () => {
         <ShipmentCard
           status="In Transit, freight moving through carrier network"
           title="In Transit"
-          subtitle="Freight moving through carrier network"
           date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
@@ -334,7 +332,6 @@ const Index = () => {
         <ShipmentCard
           status="In Transit, freight moving through carrier network"
           title="In Transit"
-          subtitle="Freight moving through carrier network"
           date="Friday, October 16"
           timeWindow=""
           appointmentDetails={null}
