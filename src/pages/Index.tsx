@@ -221,7 +221,6 @@ const Index = () => {
           timeWindow=""
           appointmentDetails={null}
           customIcon={terminalIconBare}
-          iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           linehaulEta={{ date: "Tuesday, October 13", terminal: "Minneapolis, MN" }}
           shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
@@ -239,7 +238,6 @@ const Index = () => {
           timeWindow=""
           appointmentDetails={null}
           customIcon={terminalIconBare}
-          iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "ENERGY LIGHT", street: "1881 ROSE RD", city: "LAKE ZURICH", state: "IL", zip: "60047" }}
@@ -289,7 +287,6 @@ const Index = () => {
           timeWindow=""
           appointmentDetails={null}
           customIcon={terminalIconBare}
-          iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
@@ -324,7 +321,6 @@ const Index = () => {
           timeWindow=""
           appointmentDetails={null}
           customIcon={terminalIconBare}
-          iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
