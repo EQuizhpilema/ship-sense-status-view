@@ -384,6 +384,23 @@ const Index = () => {
         />
       ),
     },
+    {
+      label: "Arrived at Origin Terminal (OK International)",
+      node: (
+        <ShipmentCard
+          status="Arrived at Origin Terminal"
+          date="Tuesday, October 13 11:45pm"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={terminalIcon}
+          etaLabel="Estimated Delivery"
+          linehaulEta={{ date: "Saturday, October 17", terminal: "Sparks, NV" }}
+          shipFromAddress={{ name: "OK INTERNATIONAL", street: "10800 VALLEY VIEW STREET", city: "CYPRESS", state: "CA", zip: "90630" }}
+          deliveryAddress={{ name: "ELLSWORTH ADHESIVES (SCD)", street: "95 DISTRIBUTION DR", city: "SPARKS", state: "NV", zip: "89441" }}
+          lastLocation={{ city: "Santa Fe Springs", state: "CA" }}
+        />
+      ),
+    },
   ];
 
 
