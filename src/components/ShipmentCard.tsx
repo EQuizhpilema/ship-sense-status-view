@@ -78,9 +78,10 @@ export function ShipmentCard({
   return <Card className="max-w-xs w-full overflow-hidden rounded-3xl shadow-md border border-gray-100 bg-white">
       <CardContent className="px-6 py-6 flex flex-col space-y-4">
         <div className="flex flex-col items-center text-center space-y-3">
-          <div className={iconClassName ?? (status.toLowerCase() === "delivered" ? "bg-green-500 rounded-full p-3" :
-            status.toLowerCase() === "delivery exception" ? "bg-red-400 rounded-full p-3" : "bg-gray-900 p-2 rounded-sm")}>
-            {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-white" /> : <Truck className="h-5 w-5 text-white" />}
+          <div className={iconClassName ?? (status.toLowerCase() === "delivered" || status.toLowerCase() === "delivery exception"
+            ? "bg-white border border-gray-200 rounded-full p-3 shadow-sm"
+            : "bg-white border border-gray-200 p-2 rounded-sm shadow-sm")}>
+            {customIcon ? customIcon : status.toLowerCase() === "delivered" ? <Check className="h-6 w-6 text-green-600" /> : <Truck className="h-5 w-5 text-gray-900" />}
           </div>
           <div className="mt-3 flex flex-col items-center">
             <h2 className="text-lg font-bold leading-tight text-gray-900">{toTitleCase(title ?? status)}</h2>
