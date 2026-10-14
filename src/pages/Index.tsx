@@ -171,7 +171,7 @@ const Index = () => {
           date="Monday, October 12 2:00pm"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
           lastLocation={{ city: "Woodbridge", state: "NJ" }}
@@ -186,7 +186,7 @@ const Index = () => {
           date="Monday, October 12 2:00pm"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           alertNote={{ text: "This delivery requires an appointment.", tone: "blue" }}
           shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
           deliveryAddress={{ name: "SYNC LIGHTING AND DESIGN LLC", street: "530 CHESTNUT RIDGE RD", city: "WOODCLIFF LAKE", state: "NJ", zip: "07677" }}
@@ -202,7 +202,7 @@ const Index = () => {
           date="Tuesday, October 13"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIcon}
+          customIcon={terminalIcon}
           etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "HIPCO CHINO DISTRIBUTION", street: "14480 YORBA AVE", city: "CHINO", state: "CA", zip: "91710" }}
           deliveryAddress={{ name: "HIPCO 020", street: "1907 W INDIANA AVE", city: "SALT LAKE CITY", state: "UT", zip: "84104" }}
@@ -218,7 +218,7 @@ const Index = () => {
           date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           linehaulEta={{ date: "Tuesday, October 13", terminal: "Minneapolis, MN" }}
@@ -236,7 +236,7 @@ const Index = () => {
           date="Friday, October 16"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
@@ -286,7 +286,7 @@ const Index = () => {
           date="Wednesday, October 14"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Estimated Delivery"
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
@@ -321,7 +321,7 @@ const Index = () => {
           date="Friday, October 16"
           timeWindow=""
           appointmentDetails={null}
-          customIcon={networkIconBare}
+          customIcon={terminalIconBare}
           iconClassName="bg-transparent p-0"
           etaLabel="Revised Estimated Delivery"
           alertNote={{ text: "Delivery rescheduled from Wednesday, October 14." }}
