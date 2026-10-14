@@ -60,6 +60,7 @@ export function ShipmentCard({
   departureTime,
   lastLocation,
   etaLabel,
+  etaDate,
   linehaulEta,
   iconClassName,
   title,
