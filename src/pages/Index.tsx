@@ -366,6 +366,24 @@ const Index = () => {
         />
       ),
     },
+    {
+      label: "In Transit (AFX Inc)",
+      node: (
+        <ShipmentCard
+          status="In Transit, freight moving through carrier network"
+          title="In Transit"
+          date="Friday, October 16"
+          timeWindow=""
+          appointmentDetails={null}
+          customIcon={networkIcon}
+          etaLabel="Estimated Delivery"
+          linehaulEta={{ date: "Thursday, October 15", terminal: "Concord, NH" }}
+          shipFromAddress={{ name: "AFX INC", street: "2345 ERNIE KRUEGER CIRCLE", city: "WAUKEGAN", state: "IL", zip: "60087" }}
+          deliveryAddress={{ name: "K FIVE HOLDINGS LLC", street: "7069 S WILLOW ST", city: "MANCHESTER", state: "NH", zip: "03103" }}
+          lastLocation={{ city: "Cuyahoga County", state: "OH" }}
+        />
+      ),
+    },
   ];
 
 
