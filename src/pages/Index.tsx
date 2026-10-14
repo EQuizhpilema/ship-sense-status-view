@@ -159,9 +159,9 @@ const Index = () => {
 
   const cards: { label: string; node: React.ReactNode }[] = [
     { label: "Out for Delivery", node: <ShipmentCard {...shipmentData1} /> },
-    { label: "In Transit", node: <ShipmentCard {...shipmentData2} customIcon={networkIcon} /> },
+    { label: "In Transit", node: <ShipmentCard {...shipmentData2} customIcon={networkIcon} linehaulEta={{ date: "Friday, January 30", terminal: "Seattle, WA" }} /> },
     { label: "Delivered", node: <ShipmentCard {...shipmentData3} customIcon={<Check className="h-7 w-7 text-gray-700" />} /> },
-    { label: "In Transit (with Appointment)", node: <ShipmentCard {...shipmentData4} customIcon={networkIcon} /> },
+    { label: "In Transit (with Appointment)", node: <ShipmentCard {...shipmentData4} customIcon={networkIcon} linehaulEta={{ date: "Friday, January 30", terminal: "Portland, OR" }} /> },
     { label: "Delivery Appointment Date", node: <ShipmentCard {...shipmentData5} customIcon={<Calendar className="h-7 w-7 text-gray-700" />} /> },
     { label: "Delivery Exception", node: <ShipmentCard {...shipmentData6} customIcon={<Triangle className="h-7 w-7 text-gray-700" />} /> },
     {
@@ -285,6 +285,7 @@ const Index = () => {
         <ShipmentCard
           status="In Transit, freight moving through carrier network"
           title="In Transit"
+          linehaulEta={{ date: "Wednesday, October 14", terminal: "San Diego, CA" }}
           date="Tuesday, October 13 12:00pm"
           timeWindow=""
           appointmentDetails={null}
@@ -322,6 +323,7 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIcon}
           etaLabel="Estimated Delivery"
+          linehaulEta={{ date: "Tuesday, October 13", terminal: "Salt Lake City, UT" }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
           lastLocation={{ city: "Northlake", state: "IL" }}
@@ -356,6 +358,7 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={networkIcon}
           etaLabel="Revised Estimated Delivery"
+          linehaulEta={{ date: "Tuesday, October 13", terminal: "Salt Lake City, UT" }}
           alertNote={{ text: "Estimated delivery changed from Wednesday, October 14." }}
           shipFromAddress={{ name: "STERLING PLATING, INC", street: "4629 N RONALD STREET", city: "HARWOOD HEIGHTS", state: "IL", zip: "60706" }}
           deliveryAddress={{ name: "DOUBLE D BOLT", street: "1165 N 1565 W", city: "OREM", state: "UT", zip: "84057" }}
