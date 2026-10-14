@@ -394,6 +394,7 @@ const Index = () => {
           appointmentDetails={null}
           customIcon={terminalIcon}
           etaLabel="Estimated Delivery"
+          etaDate="Monday, October 19"
           linehaulEta={{ date: "Saturday, October 17", terminal: "Sparks, NV" }}
           shipFromAddress={{ name: "OK INTERNATIONAL", street: "10800 VALLEY VIEW STREET", city: "CYPRESS", state: "CA", zip: "90630" }}
           deliveryAddress={{ name: "ELLSWORTH ADHESIVES (SCD)", street: "95 DISTRIBUTION DR", city: "SPARKS", state: "NV", zip: "89441" }}
