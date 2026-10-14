@@ -35,6 +35,7 @@ interface ShipmentCardProps {
     state?: string;
   };
   etaLabel?: string;
+  etaDate?: string;
   linehaulEta?: { date: string; label?: string; terminal?: string };
   iconClassName?: string;
   title?: string;
@@ -59,6 +60,7 @@ export function ShipmentCard({
   departureTime,
   lastLocation,
   etaLabel,
+  etaDate,
   linehaulEta,
   iconClassName,
   title,
@@ -112,8 +114,9 @@ export function ShipmentCard({
             </>}
           
           {status.toLowerCase() !== "in transit" && status.toLowerCase() !== "delivered" && status.toLowerCase() !== "delivery exception" && <>
-              {etaLabel && <p className="text-sm text-gray-600">{etaLabel}</p>}
-              <p className={`text-base font-medium text-gray-900 ${etaLabel ? "!mt-0.5" : ""}`}>{date}</p>
+              {etaDate && <p className="text-sm text-gray-500">{date}</p>}
+              {etaLabel && <p className={`text-sm text-gray-600 ${etaDate ? "!mt-3" : ""}`}>{etaLabel}</p>}
+              <p className={`text-base font-medium text-gray-900 ${etaLabel ? "!mt-0.5" : ""}`}>{etaDate ?? date}</p>
 
             </>}
 
