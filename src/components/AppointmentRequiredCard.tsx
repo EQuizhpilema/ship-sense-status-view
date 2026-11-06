@@ -15,6 +15,7 @@ interface AppointmentRequiredCardProps {
   estimatedDelivery?: string;
   contact: {
     heading?: string;
+    helperText?: string;
     phone: string;
     email: string;
   };
@@ -95,7 +96,11 @@ export function AppointmentRequiredCard({
           </div>
 
           <div className="alert cli-warning-note mt-3 mb-0" role="alert">
-            <p className="fw-bold mb-2">{contact.heading ?? "Contact Customer Service at"}</p>
+            <p className="fw-bold mb-1">{contact.heading ?? "Contact Customer Service at"}</p>
+            <p className="small mb-2">
+              {contact.helperText ??
+                "We want to deliver your shipment as soon as possible, but we need an appointment scheduled to do so. Call or email us to set one up."}
+            </p>
             <a className="cli-contact d-flex align-items-center gap-2 mb-1" href={phoneHref}>
               <span className="material-symbols-outlined">call</span>
               <span>{contact.phone}</span>
