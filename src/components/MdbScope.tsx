@@ -11,7 +11,8 @@ const SHARED_PATTERNS = `
 .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased}
 .cli-icon-tile{width:44px;height:44px;border-radius:.6rem;background:color-mix(in srgb,var(--mdb-primary) 10%,transparent);color:var(--mdb-primary);display:inline-flex;align-items:center;justify-content:center}
 .cli-info-note{background:var(--cli-alt-background-color);border:1px solid var(--cli-alt-border-color);border-left:4px solid var(--mdb-primary);border-radius:.75rem;color:var(--mdb-primary);padding:1rem}
-.cli-info-note a{color:var(--mdb-primary);text-decoration:none}
+.cli-info-note a{color:var(--mdb-primary);text-decoration:none;min-width:0}
+.cli-info-note a span:last-child{overflow-wrap:anywhere}
 .cli-info-note a:hover{text-decoration:underline}
 .cli-info-note .material-symbols-outlined,.cli-address .material-symbols-outlined{font-size:18px}
 .cli-address p{letter-spacing:.02em}
