@@ -99,7 +99,7 @@ export function AppointmentRequiredCard({
             <p className="fw-bold mb-1">{contact.heading ?? "Contact Customer Service at"}</p>
             <p className="small mb-2">
               {contact.helperText ??
-                "We want to deliver your shipment as soon as possible, but we need an appointment scheduled to do so. Call or email us to set one up."}
+                "Your shipment is ready to deliver — we just need an appointment first. Call or email us to set one up."}
             </p>
             <a className="cli-contact d-flex align-items-center gap-2 mb-1" href={phoneHref}>
               <span className="material-symbols-outlined">call</span>
