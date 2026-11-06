@@ -78,7 +78,7 @@ export function AppointmentRequiredCard({
     ...line(deliverTo),
     "",
     "Thank you",
-  ].filter((l) => l !== undefined && l !== false && l !== null).join("\n");
+  ].filter((l): l is string => typeof l === "string").join("\n");
   const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const phoneHref = `tel:${contact.phone.replace(/[^\d+]/g, "")}`;
 
