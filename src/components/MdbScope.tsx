@@ -12,7 +12,7 @@ const SHARED_PATTERNS = `
 .cli-icon-tile{width:44px;height:44px;border-radius:.6rem;background:color-mix(in srgb,var(--mdb-primary) 10%,transparent);color:var(--mdb-primary);display:inline-flex;align-items:center;justify-content:center}
 .cli-info-note{background:var(--cli-alt-background-color);border:1px solid var(--cli-alt-border-color);border-left:4px solid var(--mdb-primary);border-radius:.75rem;color:var(--mdb-primary);padding:1rem}
 .cli-info-note a{color:var(--mdb-primary);text-decoration:none;min-width:0}
-.cli-info-note a span:last-child{overflow-wrap:anywhere}
+.cli-info-note a span:last-child{overflow-wrap:break-word}
 .cli-info-note a:hover{text-decoration:underline}
 .cli-info-note .material-symbols-outlined,.cli-address .material-symbols-outlined{font-size:18px}
 .cli-address p{letter-spacing:.02em}
