@@ -409,7 +409,6 @@ const Index = () => {
         <AppointmentRequiredCard
           proNumber="12345678"
           lastLocation="Moonachie, NJ"
-          estimatedDelivery="Monday, November 9 between 9:00am and 5:00pm"
           contact={{ phone: "800 501-1599", email: "customerservice@accuratetransport.net" }}
           shipFrom={{ name: "MARYLAND CHINA", street: "54 MAIN ST", city: "REISTERSTOWN", state: "MD", zip: "21136" }}
           deliverTo={{ name: "MARKIT MAVEN LLC", street: "79A HEMPSTEAD GARDEN DRIVE", city: "WEST HEMPSTEAD", state: "NY", zip: "11552" }}

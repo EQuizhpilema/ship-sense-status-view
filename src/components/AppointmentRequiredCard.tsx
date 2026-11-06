@@ -12,7 +12,7 @@ interface AppointmentRequiredCardProps {
   title?: string;
   proNumber?: string;
   lastLocation?: string;
-  estimatedDelivery: string;
+  estimatedDelivery?: string;
   contact: {
     heading?: string;
     phone: string;
@@ -69,7 +69,7 @@ export function AppointmentRequiredCard({
     proNumber && `PRO number: ${proNumber}`,
     `Status: ${title}`,
     lastLocation && `Last location: ${lastLocation}`,
-    `Estimated delivery: ${estimatedDelivery}`,
+    estimatedDelivery && `Estimated delivery: ${estimatedDelivery}`,
     "",
     "Ship from:",
     ...line(shipFrom),
@@ -94,12 +94,7 @@ export function AppointmentRequiredCard({
             {lastLocation && <p className="text-muted small mb-0">Last location: {lastLocation}</p>}
           </div>
 
-          <div className="text-center mt-4">
-            <p className="text-muted text-uppercase small mb-1">Estimated Delivery</p>
-            <p className="fw-bold mb-0">{estimatedDelivery}</p>
-          </div>
-
-          <div className="alert cli-warning-note mt-4 mb-0" role="alert">
+          <div className="alert cli-warning-note mt-3 mb-0" role="alert">
             <p className="fw-bold mb-2">{contact.heading ?? "Contact Customer Service at"}</p>
             <a className="cli-contact d-flex align-items-center gap-2 mb-1" href={phoneHref}>
               <span className="material-symbols-outlined">call</span>
