@@ -60,7 +60,7 @@ export function AppointmentRequiredCard({
   shipFrom,
   deliverTo,
 }: AppointmentRequiredCardProps) {
-  const subject = proNumber ? `PRO ${proNumber}` : title;
+  const subject = proNumber ? `Schedule delivery appointment - pro ${proNumber}` : "Schedule delivery appointment";
   const body = [
     "Hello Customer Service,",
     "",
