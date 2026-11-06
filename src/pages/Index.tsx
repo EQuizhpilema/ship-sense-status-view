@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShipmentCard } from "@/components/ShipmentCard";
+import { AppointmentRequiredCard } from "@/components/AppointmentRequiredCard";
 import { ShipmentHistory, type HistoryEvent, type PendingStep } from "@/components/ShipmentHistory";
 import { Check, Calendar, Triangle, Building2 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -399,6 +400,18 @@ const Index = () => {
           shipFromAddress={{ name: "OK INTERNATIONAL", street: "10800 VALLEY VIEW STREET", city: "CYPRESS", state: "CA", zip: "90630" }}
           deliveryAddress={{ name: "ELLSWORTH ADHESIVES (SCD)", street: "95 DISTRIBUTION DR", city: "SPARKS", state: "NV", zip: "89441" }}
           lastLocation={{ city: "Santa Fe Springs", state: "CA" }}
+        />
+      ),
+    },
+    {
+      label: "Appointment Required For Delivery",
+      node: (
+        <AppointmentRequiredCard
+          lastLocation="Moonachie, NJ"
+          estimatedDelivery="Monday, November 9 between 9:00am and 5:00pm"
+          contact={{ phone: "800 501-1599", email: "customerservice@accuratetransport.net" }}
+          shipFrom={{ name: "MARYLAND CHINA", street: "54 MAIN ST", city: "REISTERSTOWN", state: "MD", zip: "21136" }}
+          deliverTo={{ name: "MARKIT MAVEN LLC", street: "79A HEMPSTEAD GARDEN DRIVE", city: "WEST HEMPSTEAD", state: "NY", zip: "11552" }}
         />
       ),
     },
