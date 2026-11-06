@@ -24,6 +24,10 @@ interface AppointmentRequiredCardProps {
 const line = (a: Address) =>
   [a.name, a.street, `${a.city}, ${a.state}${a.zip ? ` ${a.zip}` : ""}`].filter(Boolean);
 
+// A zero-width space after the "@" lets a long address wrap there instead of
+// mid-word when the card is narrow.
+const wrapEmail = (email: string) => email.replace("@", "@\u200B");
+
 const addressBlock = (heading: string, a: Address) => (
   <div className="cli-address mb-3">
     <h3 className="h6 d-flex align-items-center gap-2 mb-1">
@@ -81,7 +85,7 @@ export function AppointmentRequiredCard({
             </a>
             <a className="cli-contact d-flex align-items-center gap-2" href={`mailto:${contact.email}`}>
               <span className="material-symbols-outlined">mail</span>
-              <span>{contact.email}</span>
+              <span>{wrapEmail(contact.email)}</span>
             </a>
           </div>
 
