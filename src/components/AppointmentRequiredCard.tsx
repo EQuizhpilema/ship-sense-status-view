@@ -77,7 +77,7 @@ export function AppointmentRequiredCard({
             <p className="fw-bold mb-0">{estimatedDelivery}</p>
           </div>
 
-          <div className="alert cli-info-note mt-4 mb-0" role="alert">
+          <div className="alert cli-warning-note mt-4 mb-0" role="alert">
             <p className="fw-bold mb-2">{contact.heading ?? "Contact Customer Service at"}</p>
             <a className="cli-contact d-flex align-items-center gap-2 mb-1" href={phoneHref}>
               <span className="material-symbols-outlined">call</span>
