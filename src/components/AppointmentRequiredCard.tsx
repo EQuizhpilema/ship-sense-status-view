@@ -10,6 +10,7 @@ interface Address {
 
 interface AppointmentRequiredCardProps {
   title?: string;
+  proNumber?: string;
   lastLocation?: string;
   estimatedDelivery: string;
   contact: {
@@ -52,12 +53,33 @@ const addressBlock = (heading: string, a: Address) => (
  */
 export function AppointmentRequiredCard({
   title = "Appointment Required For Delivery",
+  proNumber,
   lastLocation,
   estimatedDelivery,
   contact,
   shipFrom,
   deliverTo,
 }: AppointmentRequiredCardProps) {
+  const subject = proNumber ? `PRO ${proNumber}` : title;
+  const body = [
+    "Hello Customer Service,",
+    "",
+    "I'd like to schedule a delivery appointment for this shipment.",
+    "",
+    proNumber && `PRO number: ${proNumber}`,
+    `Status: ${title}`,
+    lastLocation && `Last location: ${lastLocation}`,
+    `Estimated delivery: ${estimatedDelivery}`,
+    "",
+    "Ship from:",
+    ...line(shipFrom),
+    "",
+    "Deliver to:",
+    ...line(deliverTo),
+    "",
+    "Thank you",
+  ].filter((l): l is string => typeof l === "string").join("\n");
+  const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const phoneHref = `tel:${contact.phone.replace(/[^\d+]/g, "")}`;
 
   return (
@@ -65,7 +87,7 @@ export function AppointmentRequiredCard({
       <div className="card border rounded-4 shadow-1">
         <div className="card-body p-4">
           <div className="d-flex flex-column align-items-center text-center">
-            <span className="cli-icon-tile">
+            <span className="cli-icon-tile cli-icon-tile-warning">
               <span className="material-symbols-outlined">edit_calendar</span>
             </span>
             <h2 className="h5 fw-bold mt-3 mb-1">{title}</h2>
@@ -83,7 +105,7 @@ export function AppointmentRequiredCard({
               <span className="material-symbols-outlined">call</span>
               <span>{contact.phone}</span>
             </a>
-            <a className="cli-contact d-flex align-items-center gap-2" href={`mailto:${contact.email}`}>
+            <a className="cli-contact d-flex align-items-center gap-2" href={mailHref}>
               <span className="material-symbols-outlined">mail</span>
               <span>{wrapEmail(contact.email)}</span>
             </a>

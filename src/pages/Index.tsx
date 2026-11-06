@@ -407,6 +407,7 @@ const Index = () => {
       label: "Appointment Required For Delivery",
       node: (
         <AppointmentRequiredCard
+          proNumber="12345678"
           lastLocation="Moonachie, NJ"
           estimatedDelivery="Monday, November 9 between 9:00am and 5:00pm"
           contact={{ phone: "800 501-1599", email: "customerservice@accuratetransport.net" }}
