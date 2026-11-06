@@ -43,8 +43,8 @@ const addressBlock = (heading: string, a: Address) => (
  *
  * Built on the MDB Bootstrap + FACTS12 conventions: `card` / `card-body` /
  * `alert` markup, Material Symbols Outlined icons, and theme color tokens only.
- * `event_busy` is the calendar glyph with an exclamation mark — the appointment
- * icon, but flagging that the reader has something to do.
+ * `edit_calendar` is the appointment glyph with a pencil — the calendar icon,
+ * but signalling the reader still has to set the appointment up.
  */
 export function AppointmentRequiredCard({
   title = "Appointment Required For Delivery",
@@ -62,7 +62,7 @@ export function AppointmentRequiredCard({
         <div className="card-body p-4">
           <div className="d-flex flex-column align-items-center text-center">
             <span className="cli-icon-tile">
-              <span className="material-symbols-outlined">event_busy</span>
+              <span className="material-symbols-outlined">edit_calendar</span>
             </span>
             <h2 className="h5 fw-bold mt-3 mb-1">{title}</h2>
             {lastLocation && <p className="text-muted small mb-0">Last location: {lastLocation}</p>}
